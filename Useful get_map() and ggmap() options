@@ -27,3 +27,7 @@ ggmap(corvallis_map_bw, base_layer = ggplot(sales, aes(lon, lat))) +
 ggmap(corvallis_map_bw, base_layer = ggplot(sales, aes(lon, lat))) +
   geom_point(aes(color = class)) +
   facet_wrap(~ class)
+
+# Plot house sales using qmplot()
+qmplot(lon, lat, data = sales, geom = "point", color = bedrooms) +
+  facet_wrap(~ month)
