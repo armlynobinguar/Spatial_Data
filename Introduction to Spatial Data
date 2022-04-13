@@ -12,3 +12,10 @@ corvallis_map <- get_map(corvallis, zoom = 13, scale = 1)
 
 # Plot map at zoom level 13
 ggmap(corvallis_map)
+
+# Look at head() of sales
+head(sales)
+
+# Swap out call to ggplot() with call to ggmap()
+ggmap(corvallis_map) +
+  geom_point(aes(lon, lat), data = sales)
