@@ -7,3 +7,14 @@ corvallis_map_sat <- get_map(corvallis, zoom = 13,
 # Edit to get display satellite map
 ggmap(corvallis_map_sat) +
   geom_point(aes(lon, lat, color = year_built), data = sales)
+
+corvallis <- c(lon = -123.2620, lat = 44.5646)
+
+# Add source and maptype to get toner map from Stamen Maps
+corvallis_map_bw <- get_map(corvallis, zoom = 13, 
+                            source = "stamen", 
+                            maptype = "toner")
+
+# Edit to display toner map
+ggmap(corvallis_map_bw) +
+  geom_point(aes(lon, lat, color = year_built), data = sales)
