@@ -1,0 +1,9 @@
+corvallis <- c(lon = -123.2620, lat = 44.5646)
+
+# Add a maptype argument to get a satellite map
+corvallis_map_sat <- get_map(corvallis, zoom = 13, 
+                             maptype = "satellite")
+
+# Edit to get display satellite map
+ggmap(corvallis_map_sat) +
+  geom_point(aes(lon, lat, color = year_built), data = sales)
