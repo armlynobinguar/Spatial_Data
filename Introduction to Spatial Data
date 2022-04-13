@@ -19,3 +19,7 @@ head(sales)
 # Swap out call to ggplot() with call to ggmap()
 ggmap(corvallis_map) +
   geom_point(aes(lon, lat), data = sales)
+
+# Map color to year_built
+ggmap(corvallis_map) +
+  geom_point(aes(lon, lat, color = year_built), data = sales)
