@@ -61,3 +61,10 @@ ggmap(corvallis_map_bw,
       base_layer = ggplot(ward_sales, aes(lon, lat)),
       extent = "normal", maprange = FALSE) +
   geom_polygon(aes(group = group, fill = num_sales))
+  
+  
+# Repeat again, but map fill to avg_price
+ggmap(corvallis_map_bw, 
+      base_layer = ggplot(ward_sales, aes(lon, lat)),
+      extent = "normal", maprange = FALSE) +
+  geom_polygon(aes(group = group, fill = avg_price), alpha = .8)
