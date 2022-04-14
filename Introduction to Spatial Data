@@ -46,3 +46,7 @@ ggplot(ward_sales, aes(lon, lat)) +
 # Add a path layer with group mapped to group
 ggplot(ward_sales, aes(lon, lat)) +
 geom_path(aes(group = group))
+
+# Add a polygon layer with fill mapped to ward, and group to group
+ggplot(ward_sales, aes(lon, lat)) +
+  geom_polygon(aes(group = group, fill = ward))
