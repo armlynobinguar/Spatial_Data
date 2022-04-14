@@ -230,3 +230,13 @@ pop_by_age
 pop_by_age[["under_1"]]
 # Plot the under_1 layer
 plot(pop_by_age[["under_1"]])
+
+# Specify pop as the shp and add a tm_raster() layer
+tm_shape(pop) +
+  tm_raster()
+# Plot the under_1 layer in pop_by_age
+tm_shape(pop_by_age) +
+  tm_raster(col = "under_1")
+library(rasterVis)
+# Call levelplot() on pop
+levelplot(pop)
