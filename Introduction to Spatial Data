@@ -117,3 +117,12 @@ str(one@Polygons, max.level = 2)
 str(one@Polygons[[6]], max.level = 2)
 # Call plot on the coords slot of 6th element of one@Polygons
 plot(one@Polygons[[6]]@coords)
+
+# Subset the 169th object of countries_spdf: usa
+usa <- countries_spdf[169,]
+# Look at summary() of usa
+summary(usa)
+# Look at str() of usa
+str(usa, max.level = 2)
+# Call plot() on usa
+plot(usa)
