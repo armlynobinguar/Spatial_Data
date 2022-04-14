@@ -271,3 +271,23 @@ mag <- magma(9)
 ggplot(preds) +
   geom_tile(aes(lon, lat, fill = predicted_price), alpha = 0.8) +
   scale_fill_gradientn(colors = mag) 
+
+
+# Generate palettes from last time
+library(RColorBrewer)
+blups <- brewer.pal(9, "BuPu")
+library(viridisLite)
+vir <- viridis(9)
+mag <- magma(9)
+# Use the blups palette
+tm_shape(prop_by_age) +
+  tm_raster("age_18_24", palette = blups) +
+  tm_legend(position = c("right", "bottom"))
+# Use the vir palette
+tm_shape(prop_by_age) +
+  tm_raster("age_18_24", palette = vir) +
+  tm_legend(position = c("right", "bottom"))
+# Use the mag palette but reverse the order
+tm_shape(prop_by_age) +
+  tm_raster("age_18_24", palette = rev(mag)) +
+  tm_legend(position = c("right", "bottom"))
