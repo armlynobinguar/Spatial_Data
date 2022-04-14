@@ -50,3 +50,8 @@ geom_path(aes(group = group))
 # Add a polygon layer with fill mapped to ward, and group to group
 ggplot(ward_sales, aes(lon, lat)) +
   geom_polygon(aes(group = group, fill = ward))
+
+# Fix the polygon cropping
+ggmap(corvallis_map_bw, 
+      base_layer = ggplot(ward_sales, aes(lon, lat)), extent = "normal", maprange = FALSE) +
+  geom_polygon(aes(group = group, fill = ward))
