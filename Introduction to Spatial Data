@@ -186,3 +186,18 @@ tm_shape(countries_spdf, projection = "robin") +
   tm_fill(col = "population", style = "quantile")  +
   tm_borders(col = "burlywood4") +
   tm_style("classic")
+
+
+# Plot from last exercise
+tm_shape(countries_spdf) +
+  tm_grid(n.x = 11, n.y = 11, projection = "longlat") +
+  tm_fill(col = "population", style = "quantile")  +
+  tm_borders(col = "burlywood4")
+# Save a static version "population.png"
+tmap_save(filename = "population.png")
+# Save an interactive version "population.html"
+tm_shape(countries_spdf) +
+  tm_grid(n.x = 11, n.y = 11, projection = "longlat") +
+  tm_fill(col = "population", style = "quantile")  +
+  tm_borders(col = "burlywood4")
+tmap_save(filename = "population.html")
