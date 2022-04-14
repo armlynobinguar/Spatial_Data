@@ -86,3 +86,10 @@ print(countries_sp)
 summary(countries_sp)
 # Call plot() on countries_sp
 plot(countries_sp)
+
+
+# Call str() on countries_sp
+str(countries_sp)
+# Call str() on countries_sp with max.level = 2
+str(countries_sp, max.level = 2)
+```
