@@ -134,3 +134,10 @@ str(countries_spdf@data)
 countries_spdf$name
 # Pull out the subregion column using [[
 countries_spdf[["subregion"]]
+
+# Create logical vector: is_nz
+is_nz <- countries_spdf$name == "New Zealand"
+# Subset countries_spdf using is_nz: nz
+nz <- countries_spdf[is_nz,]
+# Plot nz
+plot(nz)
