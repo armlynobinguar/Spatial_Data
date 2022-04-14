@@ -110,3 +110,10 @@ print(one)
 summary(one)
 # Call str() on one with max.level = 2
 str(one, max.level = 2)
+
+# str() with max.level = 2, on the Polygons slot of one
+str(one@Polygons, max.level = 2)
+# str() with max.level = 2, on the 6th element of the one@Polygons
+str(one@Polygons[[6]], max.level = 2)
+# Call plot on the coords slot of 6th element of one@Polygons
+plot(one@Polygons[[6]]@coords)
