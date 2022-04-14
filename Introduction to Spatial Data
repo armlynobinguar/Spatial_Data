@@ -201,3 +201,11 @@ tm_shape(countries_spdf) +
   tm_fill(col = "population", style = "quantile")  +
   tm_borders(col = "burlywood4")
 tmap_save(filename = "population.html")
+
+
+# Print pop
+print(pop)
+# Call str() on pop, with max.level = 2
+str(pop, max.level = 2)
+# Call summary on pop
+summary(pop)
