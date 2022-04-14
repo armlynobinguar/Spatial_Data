@@ -101,3 +101,12 @@ summary(countries_sp)
 str(countries_spdf, max.level = 2)
 # Plot countries_spdf
 plot(countries_spdf)
+
+# 169th element of countries_spdf@polygons: one
+one <- countries_spdf@polygons[[169]]
+# Print one
+print(one)
+# Call summary() on one
+summary(one)
+# Call str() on one with max.level = 2
+str(one, max.level = 2)
