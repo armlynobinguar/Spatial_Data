@@ -74,3 +74,8 @@ ggplot(preds, aes(lon, lat)) + geom_point()
 
 # Add a tile layer with fill mapped to predicted_price
 ggplot(preds, aes(lon, lat)) + geom_tile(aes(fill=predicted_price))
+
+# Use ggmap() instead of ggplot()
+ggmap(corvallis_map_bw) +
+  geom_tile(aes(lon, lat, fill = predicted_price), 
+            data = preds, alpha = 0.8)
