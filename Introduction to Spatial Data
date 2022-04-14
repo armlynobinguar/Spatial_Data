@@ -223,3 +223,10 @@ pop_by_age
 pop_by_age[["under_1"]]
 # Plot the under_1 layer
 plot(pop_by_age[["under_1"]])
+
+# Print pop_by_age
+pop_by_age
+# Subset out the under_1 layer using [[
+pop_by_age[["under_1"]]
+# Plot the under_1 layer
+plot(pop_by_age[["under_1"]])
