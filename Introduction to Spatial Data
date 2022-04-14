@@ -55,3 +55,9 @@ ggplot(ward_sales, aes(lon, lat)) +
 ggmap(corvallis_map_bw, 
       base_layer = ggplot(ward_sales, aes(lon, lat)), extent = "normal", maprange = FALSE) +
   geom_polygon(aes(group = group, fill = ward))
+
+# Repeat, but map fill to num_sales
+ggmap(corvallis_map_bw, 
+      base_layer = ggplot(ward_sales, aes(lon, lat)),
+      extent = "normal", maprange = FALSE) +
+  geom_polygon(aes(group = group, fill = num_sales))
