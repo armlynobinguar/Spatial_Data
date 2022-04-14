@@ -209,3 +209,10 @@ print(pop)
 str(pop, max.level = 2)
 # Call summary on pop
 summary(pop)
+
+# Call plot() on pop
+plot(pop)
+# Call str() on values(pop)
+str(values(pop))
+# Call head() on values(pop)
+head(values(pop))
