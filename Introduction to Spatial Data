@@ -126,3 +126,11 @@ summary(usa)
 str(usa, max.level = 2)
 # Call plot() on usa
 plot(usa)
+
+# Call head() and str() on the data slot of countries_spdf
+head(countries_spdf@data)
+str(countries_spdf@data)
+# Pull out the name column using $
+countries_spdf$name
+# Pull out the subregion column using [[
+countries_spdf[["subregion"]]
