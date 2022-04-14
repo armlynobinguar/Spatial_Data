@@ -141,3 +141,7 @@ is_nz <- countries_spdf$name == "New Zealand"
 nz <- countries_spdf[is_nz,]
 # Plot nz
 plot(nz)
+
+
+# Use qtm() to create a choropleth map of gdp
+qtm(shp = countries_spdf, fill = "gdp")
