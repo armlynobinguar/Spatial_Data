@@ -38,3 +38,7 @@ ggmap(corvallis_map) +
   # Add a point layer with color mapped to ward
 ggplot(ward_sales, aes(lon, lat)) +
 geom_point(aes(color = ward))
+
+# Add a point layer with color mapped to group
+ggplot(ward_sales, aes(lon, lat)) +
+  geom_point(aes(color = group))
