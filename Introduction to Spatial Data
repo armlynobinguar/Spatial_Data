@@ -79,3 +79,10 @@ ggplot(preds, aes(lon, lat)) + geom_tile(aes(fill=predicted_price))
 ggmap(corvallis_map_bw) +
   geom_tile(aes(lon, lat, fill = predicted_price), 
             data = preds, alpha = 0.8)
+            
+ # Print countries_sp
+print(countries_sp)
+# Call summary() on countries_sp
+summary(countries_sp)
+# Call plot() on countries_sp
+plot(countries_sp)
