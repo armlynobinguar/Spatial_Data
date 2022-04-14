@@ -68,3 +68,6 @@ ggmap(corvallis_map_bw,
       base_layer = ggplot(ward_sales, aes(lon, lat)),
       extent = "normal", maprange = FALSE) +
   geom_polygon(aes(group = group, fill = avg_price), alpha = .8)
+
+# Add a geom_point() layer
+ggplot(preds, aes(lon, lat)) + geom_point()
