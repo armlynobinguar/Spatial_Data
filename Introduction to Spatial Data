@@ -93,3 +93,11 @@ str(countries_sp)
 # Call str() on countries_sp with max.level = 2
 str(countries_sp, max.level = 2)
 ```
+
+# Call summary() on countries_spdf and countries_sp
+summary(countries_spdf)
+summary(countries_sp)
+# Call str() with max.level = 2 on countries_spdf
+str(countries_spdf, max.level = 2)
+# Plot countries_spdf
+plot(countries_spdf)
