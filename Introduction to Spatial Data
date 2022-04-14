@@ -34,3 +34,7 @@ ggmap(corvallis_map) +
     aes(lon, lat, color = price / finished_squarefeet), 
     data = sales
   )
+  
+  # Add a point layer with color mapped to ward
+ggplot(ward_sales, aes(lon, lat)) +
+geom_point(aes(color = ward))
