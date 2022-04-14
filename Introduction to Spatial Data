@@ -145,3 +145,15 @@ plot(nz)
 
 # Use qtm() to create a choropleth map of gdp
 qtm(shp = countries_spdf, fill = "gdp")
+
+
+# Add style argument to the tm_fill() call
+tm_shape(countries_spdf) +
+  tm_fill(col = "population", style = "quantile") +
+  # Add a tm_borders() layer 
+  tm_borders(col = "burlywood4")
+# New plot, with tm_bubbles() instead of tm_fill()
+tm_shape(countries_spdf) +
+  tm_bubbles(size = "population", style = "quantile") +
+  # Add a tm_borders() layer 
+  tm_borders(col = "burlywood4")
