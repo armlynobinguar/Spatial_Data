@@ -240,3 +240,25 @@ tm_shape(pop_by_age) +
 library(rasterVis)
 # Call levelplot() on pop
 levelplot(pop)
+
+
+# 9 steps on the RColorBrewer "BuPu" palette: blups
+blups <- brewer.pal(9, "BuPu")
+# Add scale_fill_gradientn() with the blups palette
+ggplot(preds) +
+  geom_tile(aes(lon, lat, fill = predicted_price), alpha = 0.8) +
+  scale_fill_gradientn(colors = blups)
+library(viridisLite)
+# viridisLite viridis palette with 9 steps: vir
+vir <- viridis(9)
+# Add scale_fill_gradientn() with the vir palette
+ggplot(preds) +
+  geom_tile(aes(lon, lat, fill = predicted_price), alpha = 0.8) +
+  scale_fill_gradientn(colors = vir)
+library(viridisLite)
+# mag: a viridisLite magma palette with 9 steps
+mag <- magma(9)
+# Add scale_fill_gradientn() with the mag palette
+ggplot(preds) +
+  geom_tile(aes(lon, lat, fill = predicted_price), alpha = 0.8) +
+  scale_fill_gradientn(colors = mag) 
