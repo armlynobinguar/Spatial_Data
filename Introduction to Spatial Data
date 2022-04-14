@@ -262,3 +262,12 @@ mag <- magma(9)
 ggplot(preds) +
   geom_tile(aes(lon, lat, fill = predicted_price), alpha = 0.8) +
   scale_fill_gradientn(colors = mag) 
+
+library(viridisLite)
+# mag: a viridisLite magma palette with 9 steps
+mag <- magma(9)
+
+# Add scale_fill_gradientn() with the mag palette
+ggplot(preds) +
+  geom_tile(aes(lon, lat, fill = predicted_price), alpha = 0.8) +
+  scale_fill_gradientn(colors = mag) 
