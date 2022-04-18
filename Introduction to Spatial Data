@@ -530,3 +530,21 @@ tm_shape(nyc_tracts_merge) +
   # Add a neighborhood layer, tm_borders()
   tm_shape(neighborhoods) +
   tm_borders() 
+
+library(tmap)
+
+# Find unique() nyc_tracts_merge$COUNTYFP
+unique(nyc_tracts_merge$COUNTYFP)
+
+# Add logical expression to pull out New York County
+manhat_hoods <- neighborhoods[neighborhoods$CountyFIPS == "061", ]
+
+tm_shape(nyc_tracts_merge) +
+  tm_fill(col = "estimate") +
+  tm_shape(water) +
+  tm_fill(col = "grey90") +
+  # Edit to use manhat_hoods instead
+  tm_shape(manhat_hoods) +
+  tm_borders() +
+  # Add a tm_text() layer
+  tm_text(text = "NTAName")
