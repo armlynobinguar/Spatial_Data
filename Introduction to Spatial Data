@@ -471,3 +471,11 @@ head(coordinates(neighborhoods))
 plot(neighborhoods)
 plot(nyc_tracts, add = TRUE, col = "red")
 plot(water, add = TRUE, col = "blue")
+
+library(sp)
+
+# Use str() on nyc_income
+str(nyc_income)
+
+# ...and on nyc_tracts@data
+str(nyc_tracts@data)
