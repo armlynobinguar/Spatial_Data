@@ -430,3 +430,15 @@ summary(income_grid)
 
 # Call plot() on income_grid
 plot(income_grid)
+
+library(sp)
+library(tigris)
+
+# Call tracts(): nyc_tracts
+nyc_tracts <- tracts(state = "NY", county = "New York", cb = TRUE)
+
+# Call summary() on nyc_tracts
+summary(nyc_tracts)
+
+# Plot nyc_tracts
+plot(nyc_tracts)
