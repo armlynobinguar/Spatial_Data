@@ -519,3 +519,14 @@ summary(nyc_tracts_merge)
 # Choropleth with col mapped to estimate
 tm_shape(nyc_tracts_merge) +
   tm_fill(col = "estimate") 
+  
+library(tmap)
+
+tm_shape(nyc_tracts_merge) +
+  tm_fill(col = "estimate") +
+  # Add a water layer, tm_fill() with col = "grey90"
+  tm_shape(water) +
+  tm_fill(col = "grey90") +
+  # Add a neighborhood layer, tm_borders()
+  tm_shape(neighborhoods) +
+  tm_borders() 
