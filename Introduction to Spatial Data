@@ -505,3 +505,17 @@ all((nyc_tracts$TRACTCE %in% nyc_income$tract))
 
 # Check nyc_income in nyc_tracts
 all((nyc_income$tract %in% nyc_tracts$TRACTCE))
+
+
+library(sp)
+library(tmap)
+
+# Merge nyc_tracts and nyc_income: nyc_tracts_merge
+nyc_tracts_merge <- merge(nyc_tracts, nyc_income, by.x = "TRACTCE", by.y = "tract")
+
+# Call summary() on nyc_tracts_merge
+summary(nyc_tracts_merge)
+
+# Choropleth with col mapped to estimate
+tm_shape(nyc_tracts_merge) +
+  tm_fill(col = "estimate") 
