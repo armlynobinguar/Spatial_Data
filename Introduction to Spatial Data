@@ -341,3 +341,21 @@ tm_shape(prop_by_age) +
 
 # Save your plot to "prop_18-24.html"
 tmap_save(filename = "prop_18-24.html")
+
+
+# Print migration
+migration
+
+# Diverging "RdGy" palette
+red_gray <- brewer.pal(7, "RdGy")
+
+# Use red_gray as the palette 
+tm_shape(migration) +
+  tm_raster(palette = red_gray) +
+  tm_legend(outside = TRUE, outside.position = c("bottom"))
+
+# Add fixed breaks 
+tm_shape(migration) +
+  tm_raster(palette = red_gray, style = "fixed", 
+     breaks = c(-5e6, -5e3, -5e2, -5e1, 5e1, 5e2, 5e3, 5e6)) +
+  tm_legend(outside = TRUE, outside.position = c("bottom"))
