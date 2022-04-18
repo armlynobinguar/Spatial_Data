@@ -442,3 +442,17 @@ summary(nyc_tracts)
 
 # Plot nyc_tracts
 plot(nyc_tracts)
+
+library(sp)
+
+# proj4string() on nyc_tracts and neighborhoods
+proj4string(nyc_tracts)
+proj4string(neighborhoods)
+
+# coordinates() on nyc_tracts and neighborhoods
+head(coordinates(nyc_tracts))
+head(coordinates(neighborhoods))
+
+# plot() neighborhoods and nyc_tracts
+plot(neighborhoods)
+plot(nyc_tracts, add = TRUE, col = "red")
