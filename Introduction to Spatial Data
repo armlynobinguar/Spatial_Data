@@ -492,3 +492,16 @@ nyc_tracts@data <- nyc_income
 plot(nyc_tracts)
 plot(nyc_tracts[nyc_tracts$tract == "002201", ], 
      col = "red", add = TRUE)
+
+
+# Check for duplicates in nyc_income
+any(duplicated(nyc_income$tract))
+
+# Check for duplicates in nyc_tracts
+any(duplicated(nyc_tracts$TRACTCE))
+
+# Check nyc_tracts in nyc_income
+all((nyc_tracts$TRACTCE %in% nyc_income$tract))
+
+# Check nyc_income in nyc_tracts
+all((nyc_income$tract %in% nyc_tracts$TRACTCE))
