@@ -312,3 +312,32 @@ tm_shape(prop_by_age) +
     style = "fixed", breaks = c(0.025, 0.05, 0.1, 0.2, 0.25, 0.3, 1))
 # Save your plot to "prop_18-24.html"
 tmap_save(filename = "prop_18-24.html")
+
+
+mag <- viridisLite::magma(7)
+
+library(classInt)
+
+# Create 5 "pretty" breaks with classIntervals()
+classIntervals(values(prop_by_age[["age_18_24"]]), 
+               n = 5, style = "pretty")
+
+# Create 5 "quantile" breaks with classIntervals()
+classIntervals(values(prop_by_age[["age_18_24"]]), 
+               n = 5, style = "quantile")
+
+# Use 5 "quantile" breaks in tm_raster()
+tm_shape(prop_by_age) +
+  tm_raster("age_18_24", palette = mag, style = "quantile") +
+  tm_legend(position = c("right", "bottom"))
+
+# Create histogram of proportions
+hist(values(prop_by_age)[, "age_18_24"])
+
+# Use fixed breaks in tm_raster()
+tm_shape(prop_by_age) +
+  tm_raster("age_18_24", palette = mag,
+    style = "fixed", breaks = c(0.025, 0.05, 0.1, 0.2, 0.25, 0.3, 1))
+
+# Save your plot to "prop_18-24.html"
+tmap_save(filename = "prop_18-24.html")
