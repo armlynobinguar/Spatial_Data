@@ -412,3 +412,21 @@ summary(neighborhoods)
 
 # Plot neighborhoods
 plot(neighborhoods)
+
+
+library(raster) 
+
+# Call dir()
+dir()
+
+# Call dir() on the directory
+dir("nyc_grid_data")
+
+# Use raster() with file path: income_grid
+income_grid <- raster("nyc_grid_data/m5602ahhi00.tif")
+
+# Call summary() on income_grid
+summary(income_grid)
+
+# Call plot() on income_grid
+plot(income_grid)
