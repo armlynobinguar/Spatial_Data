@@ -479,3 +479,16 @@ str(nyc_income)
 
 # ...and on nyc_tracts@data
 str(nyc_tracts@data)
+
+# Highlight tract 002201 in nyc_tracts
+plot(nyc_tracts)
+plot(nyc_tracts[nyc_tracts$TRACTCE == "002201", ], 
+     col = "red", add = TRUE)
+     
+# Set nyc_tracts@data to nyc_income
+nyc_tracts@data <- nyc_income
+
+# Highlight tract 002201 again
+plot(nyc_tracts)
+plot(nyc_tracts[nyc_tracts$tract == "002201", ], 
+     col = "red", add = TRUE)
