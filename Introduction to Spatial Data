@@ -359,3 +359,37 @@ tm_shape(migration) +
   tm_raster(palette = red_gray, style = "fixed", 
      breaks = c(-5e6, -5e3, -5e2, -5e1, 5e1, 5e2, 5e3, 5e6)) +
   tm_legend(outside = TRUE, outside.position = c("bottom"))
+
+library(raster)
+
+# Plot land_cover
+tm_shape(land_cover) +
+  tm_raster() 
+
+# Palette like the ggplot2 default
+hcl_cols <- hcl(h = seq(15, 375, length = 9), 
+                c = 100, l = 65)[-9]
+
+# Use hcl_cols as the palette
+tm_shape(land_cover) +
+  tm_raster(palette = hcl_cols) 
+
+# Examine levels of land_cover
+levels(land_cover)
+
+# A set of intuitive colors
+intuitive_cols <- c(
+  "darkgreen",
+  "darkolivegreen4",
+  "goldenrod2",
+  "seagreen",
+  "wheat",
+  "slategrey",
+  "white",
+  "lightskyblue1"
+)
+
+# Use intuitive_cols as palette
+tm_shape(land_cover) +
+  tm_raster(palette = intuitive_cols) +
+  tm_legend(position = c("left", "bottom"))
