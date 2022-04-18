@@ -456,3 +456,18 @@ head(coordinates(neighborhoods))
 # plot() neighborhoods and nyc_tracts
 plot(neighborhoods)
 plot(nyc_tracts, add = TRUE, col = "red")
+
+library(sp)
+library(raster)
+
+# Use spTransform on neighborhoods: neighborhoods
+neighborhoods <- spTransform(neighborhoods,   
+                             proj4string(nyc_tracts))
+
+# head() on coordinates() of neighborhoods
+head(coordinates(neighborhoods))
+
+# Plot neighborhoods, nyc_tracts and water
+plot(neighborhoods)
+plot(nyc_tracts, add = TRUE, col = "red")
+plot(water, add = TRUE, col = "blue")
