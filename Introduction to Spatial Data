@@ -393,3 +393,22 @@ intuitive_cols <- c(
 tm_shape(land_cover) +
   tm_raster(palette = intuitive_cols) +
   tm_legend(position = c("left", "bottom"))
+  
+  
+library(sp)
+library(rgdal)
+
+# Use dir() to find directory name
+dir()
+
+# Call dir() with directory name
+dir("nynta_16c")
+
+# Read in shapefile with readOGR(): neighborhoods
+neighborhoods <- readOGR("nynta_16c", "nynta")
+
+# summary() of neighborhoods
+summary(neighborhoods)
+
+# Plot neighborhoods
+plot(neighborhoods)
