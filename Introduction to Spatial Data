@@ -565,3 +565,25 @@ tm_shape(nyc_tracts_merge) +
   tm_shape(manhat_hoods) +
     tm_borders() +
     tm_text(text = "name", size = 0.5)
+
+library(tmap)
+
+tm_shape(nyc_tracts_merge) +
+  # Add title and change palette
+  tm_fill(col = "estimate", 
+          title = "Median Income",
+          palette = "Greens") +
+  # Add tm_borders()
+  tm_borders(col = "grey60", lwd = 0.5) +
+  tm_shape(water) +
+  tm_fill(col = "grey90") +
+  tm_shape(manhat_hoods) +
+  # Change col and lwd of neighborhood boundaries
+  tm_borders(col = "grey40", lwd = 2) +
+  tm_text(text = "name", size = 0.5) +
+  # Add tm_credits()
+  tm_credits("Source: ACS 2014 5-year Estimates, \n accessed via acs package", 
+             position = c("right", "bottom"))
+
+# Save map as "nyc_income_map.png"
+tmap_save(filename = "nyc_income_map.png", width = 4, height = 7)
