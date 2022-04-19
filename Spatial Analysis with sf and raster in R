@@ -271,3 +271,19 @@ trees_sf <- st_as_sf(trees_sp)
 
 # Confirm conversion
 class(trees_sf)
+
+# Read in the CSV
+trees <- read.csv("trees.csv")
+
+# Convert the data frame to an sf object
+trees_sf <- st_as_sf(trees, coords = c("longitude", "latitude"), crs = 4326)
+
+# Plot the geometry of the points
+plot(st_geometry(trees_sf))
+
+# Write the file out with coordinates
+st_write(trees_sf, "new_trees.csv",  layer_options = "GEOMETRY=AS_XY", delete_dsn = TRUE)
+
+# Read in the file you just created and check coordinates
+new_trees <- read.csv("new_trees.csv")
+head(new_trees)
