@@ -1,0 +1,14 @@
+# Load the sf package
+library(sf)
+
+# Read in the trees shapefile
+trees <- st_read("trees.shp")
+
+# Read in the neighborhood shapefile
+neighborhoods <- st_read("neighborhoods.shp")
+
+# Read in the parks shapefile
+parks <- st_read("parks.shp")
+
+# View the first few trees
+head(trees)
