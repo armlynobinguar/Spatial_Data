@@ -93,3 +93,20 @@ parks_geo <- st_geometry(parks)
 
 # Plot the geometry of the parks data
 plot(parks_geo)
+
+# Load the raster package
+library(raster)
+
+# Read in the rasters
+canopy <- raster("canopy.tif")
+manhattan <- brick("manhattan.tif")
+
+# Get the extent of the canopy object
+extent(canopy)
+
+# Get the CRS of the manhattan object
+crs(manhattan)
+
+# Determine the number of grid cells in both raster objects
+ncell(manhattan)
+ncell(canopy)
