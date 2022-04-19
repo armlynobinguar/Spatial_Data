@@ -134,3 +134,12 @@ vals <- getValues(canopy)
 
 # Use hist() to create a histogram of the values
 hist(vals)
+
+# Plot the canopy raster (single raster)
+plot(canopy)
+
+# Plot the manhattan raster (as a single image for each layer)
+plot(manhattan)
+
+# Plot the manhattan raster as an image
+plotRGB(manhattan)
