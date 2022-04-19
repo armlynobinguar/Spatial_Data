@@ -50,3 +50,19 @@ honeylocust_lim <- honeylocust %>% select(tree_id, boroname)
 
 # Use head() to look at the first few records
 head(honeylocust_lim)
+
+# Create a standard, non-spatial data frame with one column
+df <- data.frame(a = 1:3)
+
+# Add a list column to your data frame
+df$b <- list(1:4, 1:5, 1:10)
+
+# Look at your data frame with head
+head(df)
+
+# Convert your data frame to a tibble and print on console
+as_tibble(df)
+
+# Pull out the third observation from both columns individually
+df$a[3]
+df$b[3]
