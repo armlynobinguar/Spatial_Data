@@ -66,3 +66,18 @@ as_tibble(df)
 # Pull out the third observation from both columns individually
 df$a[3]
 df$b[3]
+
+# Read in the parks shapefile
+parks <- st_read("parks.shp")
+
+# Compute the areas of the parks
+areas <- st_area(parks)
+
+# Create a quick histogram of the areas using hist
+hist(areas, xlim = c(0, 200000), breaks = 1000)
+
+# Filter to parks greater than 30000 (square meters)
+big_parks <- parks %>% filter(unclass(areas) > 30000)
+
+# Plot just the geometry of big_parks
+plot(st_geometry(big_parks))
