@@ -81,3 +81,15 @@ big_parks <- parks %>% filter(unclass(areas) > 30000)
 
 # Plot just the geometry of big_parks
 plot(st_geometry(big_parks))
+
+# Plot the parks object using all defaults
+plot(parks)
+
+# Plot just the acres attribute of the parks data
+plot(parks["acres"])
+
+# Create a new object of just the parks geometry
+parks_geo <- st_geometry(parks)
+
+# Plot the geometry of the parks data
+plot(parks_geo)
