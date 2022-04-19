@@ -12,3 +12,20 @@ parks <- st_read("parks.shp")
 
 # View the first few trees
 head(trees)
+
+# Load the raster package
+library(raster)
+
+# Read in the tree canopy single-band raster
+canopy <- raster("canopy.tif")
+
+# Read in the manhattan aerial image multi-band raster
+manhattan <- brick("manhattan.tif")
+
+# Get the class for the new objects
+class(canopy)
+class(manhattan)
+
+# Identify how many layers each object has
+nlayers(canopy)
+nlayers(manhattan)
