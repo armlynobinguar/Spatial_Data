@@ -159,3 +159,20 @@ crs(manhattan)
 # Assign the CRS to manhattan
 crs_2 <- "+proj=utm +zone=18 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
 crs(manhattan) <- crs_2
+
+# Get the CRS from the canopy object
+the_crs <- crs(canopy, asText = TRUE)
+
+# Project trees to match the CRS of canopy
+trees_crs <- st_transform(trees, crs = the_crs)
+
+# Project neighborhoods to match the CRS of canopy
+neighborhoods_crs <- st_transform(neighborhoods, crs = the_crs)
+
+# Project manhattan to match the CRS of canopy
+manhattan_crs <- projectRaster(manhattan, crs = the_crs, method = "ngb")
+
+# Look at the CRS to see if they match
+st_crs(trees_crs)
+st_crs(neighborhoods_crs)
+crs(manhattan_crs)
