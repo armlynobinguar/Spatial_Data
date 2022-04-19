@@ -176,3 +176,29 @@ manhattan_crs <- projectRaster(manhattan, crs = the_crs, method = "ngb")
 st_crs(trees_crs)
 st_crs(neighborhoods_crs)
 crs(manhattan_crs)
+
+# Plot canopy and neighborhoods (run both lines together)
+# Do you see the neighborhoods?
+plot(canopy)
+plot(neighborhoods, add = TRUE)
+
+# See if canopy and neighborhoods share a CRS
+st_crs(neighborhoods)
+crs(canopy)
+
+# Save the CRS of the canopy layer
+the_crs <- crs(canopy, asText = TRUE)
+
+# Transform the neighborhoods CRS to match canopy
+neighborhoods_crs <- st_transform(neighborhoods, crs = the_crs)
+
+# Re-run plotting code (run both lines together)
+# Do the neighborhoods show up now?
+plot(canopy)
+plot(neighborhoods_crs, add = TRUE)
+
+# Simply run the tmap code
+tm_shape(canopy) + 
+    tm_raster() + 
+    tm_shape(neighborhoods_crs) + 
+    tm_polygons(alpha = 0.5)
