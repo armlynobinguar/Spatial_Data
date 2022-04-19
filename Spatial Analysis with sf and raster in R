@@ -256,3 +256,18 @@ sum(cnt_neighborhoods_simple)
 
 # Plot the neighborhoods_simple object geometry
 plot(st_geometry(neighborhoods_simple), col = "grey")
+
+# Read in the trees data
+trees <- st_read("trees.shp")
+
+# Convert to Spatial class
+trees_sp <- as(trees, Class = "Spatial")
+
+# Confirm conversion, should be "SpatialPointsDataFrame"
+class(trees_sp)
+
+# Convert back to sf
+trees_sf <- st_as_sf(trees_sp)
+
+# Confirm conversion
+class(trees_sf)
