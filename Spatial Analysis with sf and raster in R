@@ -29,3 +29,24 @@ class(manhattan)
 # Identify how many layers each object has
 nlayers(canopy)
 nlayers(manhattan)
+
+# Load the sf package
+library(sf)
+
+# ... and the dplyr package
+library(dplyr)
+
+# Read in the trees shapefile
+trees <- st_read("trees.shp")
+
+# Use filter() to limit to honey locust trees
+honeylocust <- trees %>% filter(species == "honeylocust")
+
+# Count the number of rows
+nrow(honeylocust)
+
+# Limit to tree_id and boroname variables
+honeylocust_lim <- honeylocust %>% select(tree_id, boroname) 
+
+# Use head() to look at the first few records
+head(honeylocust_lim)
