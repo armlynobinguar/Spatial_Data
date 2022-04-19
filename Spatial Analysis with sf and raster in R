@@ -214,3 +214,18 @@ species_no_geometry <- st_set_geometry(species_counts, NULL)
 
 # Confirm the geometry column has been dropped
 head(species_no_geometry)
+
+# Limit to the fields boro_name, county_fip and boro_code
+boro <- select(neighborhoods, boro_name, county_fip, boro_code)
+
+# Drop the geometry column
+boro_no_geometry <- st_set_geometry(boro, NULL)
+
+# Limit to distinct records
+boro_distinct <- distinct(boro_no_geometry)
+
+# Join the county detail into the trees object
+trees_with_county <- inner_join(trees, boro_distinct, by = c("boroname" = "boro_name"))
+
+# Confirm the new fields county_fip and boro_code exist
+head(trees_with_county)
