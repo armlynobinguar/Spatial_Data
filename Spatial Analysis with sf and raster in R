@@ -202,3 +202,15 @@ tm_shape(canopy) +
     tm_raster() + 
     tm_shape(neighborhoods_crs) + 
     tm_polygons(alpha = 0.5)
+
+# Create a data frame of counts by species
+species_counts <- count(trees, species, sort = TRUE)
+
+# Use head to see if the geometry column is in the data frame
+head(species_counts)
+
+# Drop the geometry column
+species_no_geometry <- st_set_geometry(species_counts, NULL)
+
+# Confirm the geometry column has been dropped
+head(species_no_geometry)
