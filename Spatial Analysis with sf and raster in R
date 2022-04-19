@@ -110,3 +110,27 @@ crs(manhattan)
 # Determine the number of grid cells in both raster objects
 ncell(manhattan)
 ncell(canopy)
+
+# Check if the data is in memory
+inMemory(canopy)
+
+# Use head() to peak at the first few records
+head(canopy)
+
+# Use getValues() to read the values into a vector
+vals <- getValues(canopy)
+
+# Use hist() to create a histogram of the values
+hist(vals)
+
+# Check if the data is in memory
+inMemory(canopy)
+
+# Use head() to peak at the first few records
+head(canopy)
+
+# Use getValues() to read the values into a vector
+vals <- getValues(canopy)
+
+# Use hist() to create a histogram of the values
+hist(vals)
