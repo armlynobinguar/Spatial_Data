@@ -389,3 +389,23 @@ length(beech_buf_union)
 
 # Plot the dissolved buffers
 plot(beech_buf_union)
+
+# Look at the data frame to see the type of geometry
+head(beech)
+
+# Convert the points to a single multi-point
+beech1 <- st_union(beech)
+
+# Look at the data frame to see the type of geometry
+head(beech1)
+
+# Confirm that we went from 17 features to 1 feature
+length(beech)
+length(beech1)
+
+# Compute the tight bounding box
+beech_hull <- st_convex_hull(beech1)
+
+# Plot the points together with the hull
+plot(beech_hull, col = "red")
+plot(beech1, add = TRUE)
