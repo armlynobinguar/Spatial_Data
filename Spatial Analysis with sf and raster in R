@@ -428,3 +428,24 @@ beech_neigh <- st_join(beech_df, neighborhoods)
 
 # Confirm that beech_neigh has the neighborhood information
 head(beech_neigh)
+
+# Identify neighborhoods that intersect with the buffer
+neighborhoods_int <- st_intersects(buf, neighborhoods)
+
+# Identify neighborhoods contained by the buffer
+neighborhoods_cont <- st_contains(buf, neighborhoods)
+
+# Get the indexes of which neighborhoods intersect
+# and are contained by the buffer
+int <- neighborhoods_int[[1]]
+cont <- neighborhoods_cont[[1]]
+
+# Get the names of the names of neighborhoods in buffer
+neighborhoods$ntaname[int]
+
+# Clip the neighborhood layer by the buffer (ignore the warning)
+neighborhoods_clip <- st_intersection(buf, neighborhoods)
+
+# Plot the geometry of the clipped neighborhoods
+plot(st_geometry(neighborhoods_clip), col = "red")
+plot(neighborhoods[cont,], add = TRUE, col = "yellow")
