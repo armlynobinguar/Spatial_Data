@@ -409,3 +409,22 @@ beech_hull <- st_convex_hull(beech1)
 # Plot the points together with the hull
 plot(beech_hull, col = "red")
 plot(beech1, add = TRUE)
+
+# Plot the beech on top of the neighborhoods
+plot(st_geometry(neighborhoods))
+plot(beech, add = TRUE, pch = 16, col = "red")
+
+# Determine whether beech has class data.frame
+class(beech)
+
+# Convert the beech geometry to a sf data frame
+beech_df <- st_sf(beech)
+
+# Confirm that beech now has the data.frame class
+class(beech_df)
+
+# Join the beech trees with the neighborhoods
+beech_neigh <- st_join(beech_df, neighborhoods)
+
+# Confirm that beech_neigh has the neighborhood information
+head(beech_neigh)
