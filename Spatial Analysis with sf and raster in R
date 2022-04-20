@@ -323,3 +323,20 @@ canopy_reclass <- reclassify(canopy, rcl = vals)
 
 # Plot again and confirm that the legend stops at 100
 plot(canopy_reclass)
+
+# Review df
+df
+
+# Convert the data frame to an sf object             
+df_sf <- st_as_sf(df, coords = c("longitude", "latitude"), crs = 4326)
+
+# Transform the points to match the manhattan CRS
+df_crs <- st_transform(df_sf, crs = crs(manhattan, asText = TRUE))
+
+# Buffer the points
+df_buf <- st_buffer(df_crs, dist = 1000)
+
+# Plot the manhattan image (it is multi-band)
+plotRGB(manhattan)
+plot(st_geometry(df_buf), col = "firebrick", add = TRUE)
+plot(st_geometry(df_crs), pch = 16, add = TRUE)
