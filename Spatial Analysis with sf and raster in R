@@ -311,3 +311,15 @@ res(canopy_small)
 
 # Determine the number of cells in the new raster
 ncell(canopy_small)
+
+# Plot the canopy layer to see the values above 100
+plot(canopy)
+
+# Set up the matrix
+vals <- cbind(100, 300, NA)
+
+# Reclassify
+canopy_reclass <- reclassify(canopy, rcl = vals)
+
+# Plot again and confirm that the legend stops at 100
+plot(canopy_reclass)
