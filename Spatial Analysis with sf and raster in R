@@ -287,3 +287,27 @@ st_write(trees_sf, "new_trees.csv",  layer_options = "GEOMETRY=AS_XY", delete_ds
 # Read in the file you just created and check coordinates
 new_trees <- read.csv("new_trees.csv")
 head(new_trees)
+
+# Read in the canopy layer
+canopy <- raster("canopy.tif")
+
+# Plot the canopy raster
+plot(canopy)
+
+# Determine the raster resolution
+res(canopy)
+
+# Determine the number of cells
+ncell(canopy)
+
+# Aggregate the raster
+canopy_small <- aggregate(canopy, fact = 10)
+
+# Plot the new canopy layer
+plot(canopy_small)
+
+# Determine the new raster resolution
+res(canopy_small)
+
+# Determine the number of cells in the new raster
+ncell(canopy_small)
