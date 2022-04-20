@@ -449,3 +449,24 @@ neighborhoods_clip <- st_intersection(buf, neighborhoods)
 # Plot the geometry of the clipped neighborhoods
 plot(st_geometry(neighborhoods_clip), col = "red")
 plot(neighborhoods[cont,], add = TRUE, col = "yellow")
+
+# Read in the parks object
+parks <- st_read("parks.shp")
+
+# Test whether the CRS match
+st_crs(empire_state) == st_crs(parks)
+
+# Project parks to match empire state
+parks_es <- st_transform(parks, crs = st_crs(empire_state))
+
+# Compute the distance between empire_state and parks_es
+d <- st_distance(empire_state, parks_es)
+
+# Take a quick look at the result
+head(d)
+
+# Find the index of the nearest park
+nearest <- which.min(d)
+
+# Identify the park that is nearest
+parks_es[nearest, ]
