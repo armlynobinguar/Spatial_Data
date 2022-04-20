@@ -353,3 +353,18 @@ centroids <- st_centroid(neighborhoods_tf)
 # Plot the neighborhood geometry
 plot(st_geometry(neighborhoods_tf), col = "grey", border = "white")
 plot(centroids, pch = 16, col = "firebrick", add = TRUE)
+
+# Plot the neighborhoods and beech trees
+plot(st_geometry(neighborhoods), col = "grey", border = "white")
+plot(beech, add = TRUE, pch = 16, col = "forestgreen")
+
+# Compute the coordinates of the bounding box
+st_bbox(beech)
+
+# Create a bounding box polygon
+beech_box <- st_make_grid(beech, n = 1)
+
+# Plot the neighborhoods, add the beech trees and add the new box
+plot(st_geometry(neighborhoods), col = "grey", border = "white")
+plot(beech, add = TRUE, pch = 16, col = "forestgreen")
+plot(beech_box, add = TRUE)
