@@ -340,3 +340,16 @@ df_buf <- st_buffer(df_crs, dist = 1000)
 plotRGB(manhattan)
 plot(st_geometry(df_buf), col = "firebrick", add = TRUE)
 plot(st_geometry(df_crs), pch = 16, add = TRUE)
+
+# Read in the neighborhods shapefile
+neighborhoods <- st_read("neighborhoods.shp")
+
+# Project neighborhoods to match manhattan
+neighborhoods_tf <- st_transform(neighborhoods, crs = 32618)
+
+# Compute the neighborhood centroids
+centroids <- st_centroid(neighborhoods_tf)
+
+# Plot the neighborhood geometry
+plot(st_geometry(neighborhoods_tf), col = "grey", border = "white")
+plot(centroids, pch = 16, col = "firebrick", add = TRUE)
