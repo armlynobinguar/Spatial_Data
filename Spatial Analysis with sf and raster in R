@@ -33,6 +33,7 @@ nlayers(manhattan)
 # Load the sf package
 library(sf)
 
+
 # ... and the dplyr package
 library(dplyr)
 
@@ -530,3 +531,16 @@ canopy_crop <- crop(canopy, parks_sp)
 
 # Plot the cropped version and compare
 plot(canopy_crop)
+
+# Project the landmarks to match canopy
+landmarks_cp <- st_transform(landmarks, crs = crs(canopy, asText = TRUE))
+
+# Convert the landmarks to a Spatial object
+landmarks_sp <- as(landmarks_cp, "Spatial")
+
+# Extract the canopy values at the landmarks
+landmarks_ex <- extract(canopy, landmarks_sp)
+
+# Look at the landmarks and extraction results
+landmarks_cp
+landmarks_ex
