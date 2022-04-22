@@ -608,3 +608,22 @@ canopy_neighborhoods <- extract(canopy, neighborhoods_sp, fun = mean)
 
 # Add the mean canopy values to neighborhoods
 neighborhoods_avg_canopy <- mutate(neighborhoods, avg_canopy = canopy_neighborhoods)
+
+# Load the ggplot2 package
+library(ggplot2)
+
+# Create a histogram of tree density
+ggplot(neighborhoods, aes(x = tree_density)) + 
+  geom_histogram(color = "white")
+
+# Create a histogram of average canopy
+ggplot(neighborhoods, aes(x = avg_canopy)) + 
+  geom_histogram(color = "white")
+
+# Create a scatter plot of tree density vs avg canopy
+ggplot(neighborhoods, aes(x = tree_density, y = avg_canopy)) + 
+    geom_point() + 
+    stat_smooth()
+
+# Compute the correlation between density and canopy
+cor(neighborhoods$tree_density, neighborhoods$avg_canopy)
