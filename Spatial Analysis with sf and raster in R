@@ -669,3 +669,7 @@ tm_shape(neighborhoods) +
 # Create a map of the manhattan aerial photo
 tm_shape(manhattan) + 
   tm_raster()
+
+# Create a map of the neighborhood polygons
+tm_shape(neighborhoods) + 
+  tm_borders(col = "black", lwd = 0.5, alpha = 0.5)
