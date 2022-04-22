@@ -574,3 +574,22 @@ tree_counts_renamed <- rename(tree_counts_no_geom, tree_cnt = n)
   
 # Create histograms of the total counts
 hist(tree_counts_renamed$tree_cnt)
+
+# Compute areas and unclass
+areas <- unclass(st_area(neighborhoods))
+
+# Add the areas to the neighborhoods object
+neighborhoods_area <- mutate(neighborhoods, area = areas)
+
+# Use left_join to join neighborhoods and counts
+neighborhoods_counts <- left_join(neighborhoods_area, 
+                                  tree_counts_renamed, by = "hood")
+
+# Replace NA values with 0
+neighborhoods_counts <- mutate(neighborhoods_counts, 
+                               tree_cnt = ifelse(is.na(tree_cnt), 
+                                                 0, tree_cnt))
+
+# Compute the density
+neighborhoods_counts <- mutate(neighborhoods_counts, 
+                               tree_density = tree_cnt/area)
