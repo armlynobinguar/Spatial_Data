@@ -559,3 +559,18 @@ canopy_imperv_overlay <- overlay(canopy, impervious, fun = f)
 
 # Plot the result (low tree canopy and high impervious areas)
 plot(canopy_imperv_overlay)
+
+# Compute the counts of all trees by neighborhood (nta) 
+tree_counts <- count(trees, hood)
+
+# Take a quick look
+head(tree_counts)
+
+# Remove the geometry
+tree_counts_no_geom <- st_set_geometry(tree_counts, NULL)
+
+# Rename the n variable to tree_cnt
+tree_counts_renamed <- rename(tree_counts_no_geom, tree_cnt = n)
+  
+# Create histograms of the total counts
+hist(tree_counts_renamed$tree_cnt)
