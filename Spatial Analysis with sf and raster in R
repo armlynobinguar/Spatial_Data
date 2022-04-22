@@ -515,3 +515,18 @@ canopy_mask <- mask(canopy, mask = parks_sp)
 
 # Plot canopy_mask &mdash; this is a raster!
 plot(canopy_mask)
+
+# Convert the parks_big to a Spatial object
+parks_sp <- as(parks_big, "Spatial")
+
+# Mask the canopy with the large parks 
+canopy_mask <- mask(canopy, mask = parks_sp)
+
+# Plot the mask
+plot(canopy_mask)
+
+# Crop canopy with parks_sp
+canopy_crop <- crop(canopy, parks_sp)
+
+# Plot the cropped version and compare
+plot(canopy_crop)
