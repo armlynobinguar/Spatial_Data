@@ -665,3 +665,7 @@ tm_shape(neighborhoods) +
     tm_polygons("avg_canopy", palette = "Greens", 
                 style = "quantile", n = 7, 
                 title = "Average tree canopy (%)")
+
+# Create a map of the manhattan aerial photo
+tm_shape(manhattan) + 
+  tm_raster()
