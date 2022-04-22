@@ -491,3 +491,27 @@ nearest <- which.min(d)
 
 # Identify the park that is nearest
 parks_es[nearest, ]
+
+# Project parks to match canopy
+parks_cp <- st_transform(parks, crs = crs(canopy, asText = TRUE))
+
+# Compute the area of the parks
+areas <- st_area(parks_cp)
+
+# Filter to parks with areas > 30000
+parks_big <- filter(parks_cp, unclass(areas) > 30000)
+
+# Plot the canopy raster
+plot(canopy)
+
+# Plot the geometry of parks_big
+plot(st_geometry(parks_big))
+
+# Convert parks to a Spatial object
+parks_sp <- as(parks_big, "Spatial")
+
+# Mask the canopy layer with parks_sp and save as canopy_mask
+canopy_mask <- mask(canopy, mask = parks_sp)
+
+# Plot canopy_mask &mdash; this is a raster!
+plot(canopy_mask)
