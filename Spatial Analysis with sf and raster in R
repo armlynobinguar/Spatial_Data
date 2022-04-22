@@ -593,3 +593,18 @@ neighborhoods_counts <- mutate(neighborhoods_counts,
 # Compute the density
 neighborhoods_counts <- mutate(neighborhoods_counts, 
                                tree_density = tree_cnt/area)
+
+# Confirm that you have the neighborhood density results
+head(neighborhoods)
+
+# Transform the neighborhoods CRS to match the canopy layer
+neighborhoods_crs <- st_transform(neighborhoods, crs = crs(canopy, asText = TRUE))
+
+# Convert neighborhoods object to a Spatial object
+neighborhoods_sp <- as(neighborhoods_crs, "Spatial")
+
+# Compute the mean of canopy values by neighborhood
+canopy_neighborhoods <- extract(canopy, neighborhoods_sp, fun = mean)
+
+# Add the mean canopy values to neighborhoods
+neighborhoods_avg_canopy <- mutate(neighborhoods, avg_canopy = canopy_neighborhoods)
