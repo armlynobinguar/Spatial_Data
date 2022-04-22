@@ -627,3 +627,21 @@ ggplot(neighborhoods, aes(x = tree_density, y = avg_canopy)) +
 
 # Compute the correlation between density and canopy
 cor(neighborhoods$tree_density, neighborhoods$avg_canopy)
+
+# Plot the tree density with default colors
+ggplot(neighborhoods) + 
+  geom_sf(aes(fill = tree_density))
+
+# Plot the tree canopy with default colors
+ggplot(neighborhoods) + 
+  geom_sf(aes(fill = avg_canopy))
+  
+# Plot the tree density using scale_fill_gradient()
+ggplot(neighborhoods) + 
+  geom_sf(aes(fill = tree_density)) + 
+  scale_fill_gradient(low = "#edf8e9", high = "#005a32")
+
+# Plot the tree canopy using the scale_fill_gradient()
+ggplot(neighborhoods) + 
+  geom_sf(aes(fill = avg_canopy)) +
+  scale_fill_gradient(low = "#edf8e9", high = "#005a32")
