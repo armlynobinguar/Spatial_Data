@@ -22,3 +22,20 @@ mapxy <- function(a = NA){
 }
 
 mapxy(1)
+
+# Load the spatstat package
+library(spatstat)
+
+# Create this many points, in a circle of this radius
+n_points <- 300
+radius <- 10
+
+# Generate uniform random numbers up to radius-squared
+r_squared <- runif(n_points, 0, radius^2)
+angle <- runif(n_points, 0, 2*pi)
+
+# Take the square root of the values to get a uniform spatial distribution
+x <- sqrt(r_squared) * cos(angle)
+y <- sqrt(r_squared) * sin(angle)
+
+plot(disc(radius)); points(x, y)
