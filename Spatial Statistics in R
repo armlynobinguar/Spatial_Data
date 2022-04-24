@@ -39,3 +39,16 @@ x <- sqrt(r_squared) * cos(angle)
 y <- sqrt(r_squared) * sin(angle)
 
 plot(disc(radius)); points(x, y)
+
+# Some variables have been pre-defined
+ls.str()
+
+# Set coordinates and window
+ppxy <- ppp(x = x, y = y, window = disc(radius))
+
+# Test the point pattern
+qt <- quadrat.test(ppxy)
+
+# Inspect the results
+plot(qt)
+print(qt)
