@@ -83,3 +83,24 @@ plot(p_regular)
 
 # Run a quadrat test
 quadrat.test(p_regular, alternative = "regular")
+
+# Point patterns are pre-defined
+p_poisson; p_regular
+
+# Calc nearest-neighbor distances for Poisson point data
+nnd_poisson <- nndist(p_poisson)
+
+# Draw a histogram of nearest-neighbor distances
+hist(nnd_poisson)
+
+# Estimate G(r)
+G_poisson <- Gest(p_poisson)
+
+# Plot G(r) vs. r
+plot(G_poisson)
+
+# Repeat for regular point data
+nnd_regular <- nndist(p_regular)
+hist(nnd_regular)
+G_regular <- Gest(p_regular)
+plot(G_regular)
