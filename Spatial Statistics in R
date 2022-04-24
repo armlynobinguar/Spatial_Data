@@ -199,3 +199,16 @@ str(seg)
 
 # Get the number of columns in the data so we can rearrange to a grid
 ncol <- length(seg$gridx)
+
+# Inspect the structure of the spatial segregation object
+str(seg)
+
+# Get the number of columns in the data so we can rearrange to a grid
+ncol <- length(seg$gridx)
+
+# Rearrange the probability column into a grid
+prob_violent <- list(x = seg$gridx,
+                     y = seg$gridy,
+                     z = matrix(seg$p[, "Violent crime"],
+                                ncol = ncol))
+image(prob_violent)
