@@ -52,3 +52,15 @@ qt <- quadrat.test(ppxy)
 # Inspect the results
 plot(qt)
 print(qt)
+
+# Create a disc of radius 10
+disc10 <- disc(10)
+
+# Compute the rate as count divided by area
+lambda <- 500 / area(disc10)
+
+# Create a point pattern object
+ppois <- rpoispp(lambda = lambda, win = disc10)
+
+# Plot the Poisson point pattern
+plot(ppois)
