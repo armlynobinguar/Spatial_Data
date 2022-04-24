@@ -305,3 +305,21 @@ plot(unmark(sasq))
 
 # Plot the points using a circle sized by date
 plot(sasq, which.marks = "date")
+
+# Show the available marks
+names(marks(sasq))
+
+# Histogram the dates of the sightings, grouped by year
+hist(marks(sasq)$date, "years", freq = TRUE)
+
+# Plot and tabulate the calendar month of all the sightings
+plot(table(marks(sasq)$month))
+
+# Split on the month mark
+sasq_by_month <- split(sasq, "month", un = TRUE)
+
+# Plot monthly maps
+plot(sasq_by_month)
+
+# Plot smoothed versions of the above maps.
+plot(density(sasq_by_month))
