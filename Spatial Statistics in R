@@ -179,3 +179,17 @@ plotcv(bw_choice); abline(v = bw_choice$hcv, lty = 2, col = "red")
 
 # Print the best bandwidth
 print(bw_choice$hcv)
+
+# Set the correct bandwidth and run for 10 simulations only
+seg10 <- spseg(
+    pts = preston_crime, 
+    h = bw_choice$hcv,
+    opt = 3,
+    ntest = 10, 
+    proc = FALSE)
+
+# Plot the segregation map for violent crime
+plotmc(seg10, "Violent crime")
+
+# Plot seg, the result of running 1000 simulations
+plotmc(seg, "Violent crime")
