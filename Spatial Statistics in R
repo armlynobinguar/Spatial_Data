@@ -167,3 +167,15 @@ frac_violent_crime_density <- crime_densities[["Violent crime"]] /
 
 # Plot the density of the fraction of violent crime
 plot(frac_violent_crime_density)
+
+# Scan from 500m to 1000m in steps of 50m
+bw_choice <- spseg(
+    preston_crime, 
+    h = seq(500, 1000, by = 50),
+    opt = 1)
+
+# Plot the results and highlight the best bandwidth
+plotcv(bw_choice); abline(v = bw_choice$hcv, lty = 2, col = "red")
+
+# Print the best bandwidth
+print(bw_choice$hcv)
