@@ -345,3 +345,15 @@ s <- seq(100, 20000, by = 400)
 
 # Scan over 14 day intervals from one week to 31 weeks 
 tm <- seq(7, 7 * 31, by = 14)
+
+# Run 999 simulations
+sasq_mc <- stmctest(sasq_xy, sasq_t, sasq_poly, tlimits, s, tm, nsim = 999, quiet = TRUE)
+names(sasq_mc)
+
+# Histogram the simulated statistics and add a line at the data value
+ggplot(data.frame(sasq_mc), aes(x = t)) +
+  geom_histogram(binwidth = 1e13) +
+  geom_vline(aes(xintercept = t0))
+
+# Compute the p-value as the proportion of tests greater than the data
+sum(sasq_mc$t > sasq_mc$t0) / 1000
