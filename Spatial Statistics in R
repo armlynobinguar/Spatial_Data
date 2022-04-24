@@ -10,3 +10,15 @@ ymax <- 2
 # Sample from a Uniform distribution
 x <- runif(n, xmin, xmax)
 y <- runif(n, ymin, ymax)
+
+# See pre-defined variables
+ls.str()
+
+# Plot points and a rectangle
+
+mapxy <- function(a = NA){
+  plot(x, y, asp = a)
+  rect(xmin, ymin, xmax, ymax)
+}
+
+mapxy(1)
