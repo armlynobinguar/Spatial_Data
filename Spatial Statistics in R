@@ -104,3 +104,25 @@ nnd_regular <- nndist(p_regular)
 hist(nnd_regular)
 G_regular <- Gest(p_regular)
 plot(G_regular)
+
+# Point patterns are pre-defined
+p_poisson; p_cluster; p_regular
+
+# Estimate the K-function for the Poisson points
+K_poisson <- Kest(p_poisson, correction = "border")
+
+# The default plot shows quadratic growth
+plot(K_poisson, . ~ r)
+
+# Subtract pi * r^2 from the Y-axis and plot
+plot(K_poisson, . - pi * r ^ 2 ~ r)
+
+# Compute envelopes of K under random locations
+K_cluster_env <- envelope(p_cluster, Kest, correction = "border")
+
+# Insert the full formula to plot K minus pi * r^2
+plot(K_cluster_env, . - pi * r ^ 2 ~ r)
+
+# Repeat for regular data
+K_regular_env <- envelope(p_regular, Kest, correction = "border")
+plot(K_regular_env, . - pi * r ^ 2 ~ r)
