@@ -253,3 +253,47 @@ p_value <- list(x = seg$gridx,
                            ncol = ncol))
 image(p_value)
 
+# Inspect the structure of the spatial segregation object
+str(seg)
+
+# Get the number of columns in the data so we can rearrange to a grid
+ncol <- length(seg$gridx)
+
+# Rearrange the probability column into a grid
+prob_violent <- list(x = seg$gridx,
+                     y = seg$gridy,
+                     z = matrix(seg$p[, "Violent crime"],
+                                ncol = ncol))
+image(prob_violent)
+
+# Rearrange the p-values, but choose a p-value threshold
+p_value <- list(x = seg$gridx,
+                y = seg$gridy,
+                z = matrix(seg$stpvalue[, "Violent crime"] < 0.05,
+                           ncol = ncol))
+image(p_value)
+
+# Create a mapping function
+segmap <- function(prob_list, pv_list, low, high){
+
+  # background map
+  plotRGB(preston_osm)
+
+  # p-value areas
+  image(pv_list, 
+        col = c("#00000000", "#FF808080"), add = TRUE) 
+
+  # probability contours
+  contour(prob_list,
+          levels = c(low, high),
+          col = c("#206020", "red"),
+          labels = c("Low", "High"),
+          add = TRUE)
+
+  # boundary window
+  plot(Window(preston_crime), add = TRUE)
+}
+
+# Map the probability and p-value
+segmap(prob_violent, p_value, 0.05, 0.15)
+
