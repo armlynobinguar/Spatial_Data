@@ -148,3 +148,22 @@ preston_map(
   cex = c(0.5, 1), 
   pch = c(19, 19)
 )
+
+# preston_crime has been pre-defined
+preston_crime
+
+# Use the split function to show the two point patterns
+crime_splits <- split(preston_crime)
+
+# Plot the split crime
+plot(crime_splits)
+
+# Compute the densities of both sets of points
+crime_densities <- density(crime_splits)
+
+# Calc the violent density divided by the sum of both
+frac_violent_crime_density <- crime_densities[["Violent crime"]] / 
+  (crime_densities[["Non-violent crime"]] + crime_densities[["Violent crime"]])
+
+# Plot the density of the fraction of violent crime
+plot(frac_violent_crime_density)
