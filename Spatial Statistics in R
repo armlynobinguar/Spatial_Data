@@ -193,3 +193,9 @@ plotmc(seg10, "Violent crime")
 
 # Plot seg, the result of running 1000 simulations
 plotmc(seg, "Violent crime")
+
+# Inspect the structure of the spatial segregation object
+str(seg)
+
+# Get the number of columns in the data so we can rearrange to a grid
+ncol <- length(seg$gridx)
