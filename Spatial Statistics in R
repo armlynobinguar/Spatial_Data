@@ -297,3 +297,11 @@ segmap <- function(prob_list, pv_list, low, high){
 # Map the probability and p-value
 segmap(prob_violent, p_value, 0.05, 0.15)
 
+# Get a quick summary of the dataset
+summary(sasq)
+
+# Plot unmarked points
+plot(unmark(sasq))
+
+# Plot the points using a circle sized by date
+plot(sasq, which.marks = "date")
