@@ -126,3 +126,25 @@ plot(K_cluster_env, . - pi * r ^ 2 ~ r)
 # Repeat for regular data
 K_regular_env <- envelope(p_regular, Kest, correction = "border")
 plot(K_regular_env, . - pi * r ^ 2 ~ r)
+
+# Load the spatstat package
+library(spatstat)
+
+# Get some summary information on the dataset
+summary(preston_crime)
+
+# Get a table of marks
+table(marks(preston_crime))
+
+# Define a function to create a map
+preston_map <- function(cols = c("green", "red"), cex = c(1, 1), pch = c(1, 1)) {
+  plotRGB(preston_osm) # from the raster package
+  plot(preston_crime, cols = cols, pch = pch, cex = cex, add = TRUE, show.window = TRUE)
+}
+
+# Draw the map with colors, sizes and plot characters
+preston_map(
+  cols = c("black", "red"), 
+  cex = c(0.5, 1), 
+  pch = c(19, 19)
+)
