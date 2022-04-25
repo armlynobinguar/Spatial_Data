@@ -490,3 +490,20 @@ pal <- c(
 
 # Plot the P(rate > 2) map
 spplot(london, "Flu_gt_2", col.regions = pal, at = seq(0, 1, len = 50))
+
+# Fit a poisson GLM.
+model_flu <- glm(
+  Flu_OBS ~ HealthDeprivation, 
+  offset = log(TOTAL_POP), 
+  data = london, 
+  family = poisson)
+
+# Is HealthDeprivation significant?
+summary(model_flu)
+
+# Put residuals into the spatial data.
+london$Flu_Resid <- residuals(model_flu)
+
+# Map the residuals using spplot
+spplot(london, "Flu_Resid")
+
