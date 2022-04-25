@@ -600,3 +600,20 @@ m_trend <- lm(pH ~ x + y, as.data.frame(ca_geo))
 
 # Check the coefficients
 summary(m_trend)
+
+# ca_geo, miss, m_trend have been pre-defined
+ls.str()
+
+# Make a vector that is TRUE for the missing data
+miss <- is.na(ca_geo$pH)
+table(miss)
+
+# Create a data frame of missing data
+ca_geo_miss <- as.data.frame(ca_geo)[miss, ]
+
+# Predict pH for the missing data
+predictions <- predict(m_trend, newdata = ca_geo_miss, se.fit = TRUE)
+
+# Compute the exceedance probability 
+pAlkaline <- 1 - pnorm(7, mean = predictions$fit, sd = predictions$se.fit)
+hist(pAlkaline)
