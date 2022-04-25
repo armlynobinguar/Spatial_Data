@@ -700,3 +700,15 @@ plot(cropped_gridpoints)
 spgrid <- SpatialPixels(cropped_gridpoints)
 coordnames(spgrid) <- c("x", "y")
 plot(spgrid)
+
+# spgrid, v_model have been pre-defined
+ls.str()
+
+# Do kriging predictions over the grid
+ph_grid <- krige(pH ~ x + y, ca_geo[!miss, ], newdata = spgrid, model = v_model)
+
+# Calc the probability of pH exceeding 7
+ph_grid$pAlkaline <- 1 - pnorm(7, mean = ph_grid$var1.pred, sd = sqrt(ph_grid$var1.var))
+
+# Map the probability of alkaline samples
+spplot(ph_grid, zcol = "pAlkaline")
