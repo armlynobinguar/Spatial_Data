@@ -375,3 +375,21 @@ london_ref$NAME[london_ref$Leave > london_ref$Remain]
 
 # Plot a map of the percentage that voted "Remain"
 spplot(london_ref, zcol = "Pct_Remain")
+
+# Use the cartogram and rgeos packages
+library(cartogram)
+library(rgeos)
+
+# Make a scatterplot of electorate vs borough area
+names(london_ref)
+plot(london_ref$Electorate, gArea(london_ref, byid = TRUE))
+
+# Make a cartogram, scaling the area to the electorate
+carto_ref <- cartogram(london_ref, "Electorate")
+plot(carto_ref)
+
+# Check the linearity of the electorate-area plot
+plot(carto_ref$Electorate, gArea(carto_ref, byid = TRUE))
+
+# Make a fairer map of the Remain percentage
+spplot(carto_ref, "Pct_Remain")
