@@ -467,3 +467,26 @@ ggplot(flu_high, aes(x = NAME, y = proportion / r,
                      ymin = lower / r, ymax = upper / r)) +
   geom_pointrange() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+# Probability of a binomial exceeding a multiple
+binom.exceed <- function(observed, population, expected, e){
+    1 - pbinom(e * expected, population, prob = observed / population)
+}
+
+# Compute P(rate > 2)
+london$Flu_gt_2 <- binom.exceed(
+            observed = london$Flu_OBS,
+            population = london$TOTAL_POP,
+            expected = london$Flu_EXP,
+            e = 2)
+
+# Use a 50-color palette that only starts changing at around 0.9
+pal <- c(
+  rep("#B0D0B0", 40),
+  colorRampPalette(c("#B0D0B0", "orange"))(5), 
+  colorRampPalette(c("orange", "red"))(5)
+)
+
+# Plot the P(rate > 2) map
+spplot(london, "Flu_gt_2", col.regions = pal, at = seq(0, 1, len = 50))
