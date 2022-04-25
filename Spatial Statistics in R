@@ -569,3 +569,22 @@ spplot(london, zcol = "spatial_resid")
 
 # Test residuals for spatial correlation
 moran.mc(london$spatial_resid, nb2listw(borough_nb), 999)
+
+# ca_geo has been pre-defined
+str(ca_geo, 1)
+
+# See what measurements are at each location
+names(ca_geo)
+
+# Get a summary of the acidity (pH) values
+summary(ca_geo$pH)
+
+# Look at the distribution
+hist(ca_geo$pH)
+
+# Make a vector that is TRUE for the missing data
+miss <- is.na(ca_geo$pH)
+table(miss)
+
+# Plot a map of acidity
+spplot(ca_geo[!miss, ], "pH")
