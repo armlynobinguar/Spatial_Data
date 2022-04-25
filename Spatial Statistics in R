@@ -588,3 +588,15 @@ table(miss)
 
 # Plot a map of acidity
 spplot(ca_geo[!miss, ], "pH")
+
+# ca_geo has been pre-defined
+str(ca_geo, 1)
+
+# Are they called lat-long, up-down, or what?
+coordnames(ca_geo)
+
+# Complete the formula
+m_trend <- lm(pH ~ x + y, as.data.frame(ca_geo))
+
+# Check the coefficients
+summary(m_trend)
