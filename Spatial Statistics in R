@@ -712,3 +712,17 @@ ph_grid$pAlkaline <- 1 - pnorm(7, mean = ph_grid$var1.pred, sd = sqrt(ph_grid$va
 
 # Map the probability of alkaline samples
 spplot(ph_grid, zcol = "pAlkaline")
+
+# ca_geo, miss are pre-defined
+ls.str()
+
+# Kriging with linear trend, predicting over the missing points
+ph_auto <- autoKrige(
+  pH ~ x + y, 
+  input_data = ca_geo[!miss, ], 
+  new_data = ca_geo[miss, ], 
+  model = "Mat"
+)
+
+# Plot the variogram, predictions, and standard error
+plot(ph_auto)
