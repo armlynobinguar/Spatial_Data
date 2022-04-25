@@ -507,3 +507,11 @@ london$Flu_Resid <- residuals(model_flu)
 # Map the residuals using spplot
 spplot(london, "Flu_Resid")
 
+
+
+# Compute the neighborhood structure.
+library(spdep)
+borough_nb <- poly2nb(london)
+
+# Test spatial correlation of the residuals.
+moran.mc(london$Flu_Resid, listw = nb2listw(borough_nb), nsim = 999)
