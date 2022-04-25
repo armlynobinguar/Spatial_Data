@@ -444,3 +444,26 @@ london$Flu_SMR <- london$Flu_OBS / london$Flu_EXP
 
 # Map the SMR
 spplot(london, "Flu_SMR")
+
+# For the binomial statistics function
+library(epitools)
+
+# Get CI from binomial distribution
+flu_ci <- binom.exact(london$Flu_OBS, london$TOTAL_POP)
+
+# Add borough names
+flu_ci$NAME <- london$NAME
+
+# Calculate London rate, then compute SMR
+r <- sum(london$Flu_OBS) / sum(london$TOTAL_POP)
+flu_ci$SMR <- flu_ci$proportion / r
+
+# Subset the high SMR data
+flu_high <- flu_ci[flu_ci$SMR > 1, ]
+
+# Plot estimates with CIs
+library(ggplot2)
+ggplot(flu_high, aes(x = NAME, y = proportion / r,
+                     ymin = lower / r, ymax = upper / r)) +
+  geom_pointrange() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
