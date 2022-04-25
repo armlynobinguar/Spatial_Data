@@ -726,3 +726,19 @@ ph_auto <- autoKrige(
 
 # Plot the variogram, predictions, and standard error
 plot(ph_auto)
+
+# ca_geo, miss, spgrid, ph_grid, v_model are pre-defined
+ls.str()
+
+# Auto-run the kriging
+ph_auto_grid <- autoKrige(pH ~ x + y, input_data = ca_geo[!miss, ], new_data = spgrid)
+
+# Remember predictions from manual kriging
+plot(ph_grid)
+
+# Plot predictions and variogram fit
+plot(ph_auto_grid)
+
+# Compare the variogram model to the earlier one
+v_model
+ph_auto_grid$var_model
