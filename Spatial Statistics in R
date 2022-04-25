@@ -393,3 +393,34 @@ plot(carto_ref$Electorate, gArea(carto_ref, byid = TRUE))
 
 # Make a fairer map of the Remain percentage
 spplot(carto_ref, "Pct_Remain")
+
+# Use the spdep package
+library(spdep)
+
+# Make neighbor list
+borough_nb <- poly2nb(london_ref)
+
+# Get center points of each borough
+borough_centers <- coordinates(london_ref)
+
+# Show the connections
+plot(london_ref); plot(borough_nb, borough_centers, add = TRUE)
+
+# Map the total pop'n
+spplot(london_ref, zcol = "TOTAL_POP")
+
+# Run a Moran I test on total pop'n
+moran.test(
+  london_ref$TOTAL_POP, 
+  nb2listw(borough_nb)
+)
+
+# Map % Remain
+spplot(london_ref, zcol = "Pct_Remain")
+
+# Run a Moran I MC test on % Remain
+moran.mc(
+  london_ref$Pct_Remain, 
+  nb2listw(borough_nb), 
+  999
+)
