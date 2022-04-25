@@ -626,3 +626,13 @@ plot(variogram(pH ~ 1, ca_geo[!miss, ], cloud = TRUE, cutoff = 10000))
 
 # Make a variogram of the non-missing data
 plot(variogram(pH ~ 1, ca_geo[!miss, ]))
+
+# ca_geo, miss have been pre-defined
+ls.str()
+
+# See what coordinates are called
+coordnames(ca_geo)
+
+# The pH depends on the coordinates
+ph_vgm <- variogram(pH ~ x + y, ca_geo[!miss, ])
+plot(ph_vgm)
