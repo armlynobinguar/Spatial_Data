@@ -540,3 +540,18 @@ summary(bayes_flu)
 # Look at the samples from the Bayesian model
 plot(samples(bayes_flu))
 
+# Compute adjacency objects
+borough_nb <- poly2nb(london)
+borough_gra <- nb2gra(borough_nb)
+
+# Fit spatial model
+flu_spatial <- bayesx(
+  Flu_OBS ~ HealthDeprivation + sx(i, bs = "spatial", map = borough_gra),
+  offset = log(london$TOTAL_POP),
+  family = "poisson", data = data.frame(london), 
+  control = bayesx.control(seed = 17610407)
+)
+
+# Summarize the model
+summary(flu_spatial)
+
