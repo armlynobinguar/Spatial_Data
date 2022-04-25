@@ -515,3 +515,28 @@ borough_nb <- poly2nb(london)
 
 # Test spatial correlation of the residuals.
 moran.mc(london$Flu_Resid, listw = nb2listw(borough_nb), nsim = 999)
+
+# Use R2BayesX
+library(R2BayesX)
+
+# Fit a GLM
+model_flu <- glm(Flu_OBS ~ HealthDeprivation, offset = log(TOTAL_POP),
+                data = london, family = poisson)
+
+# Summarize it                
+summary(model_flu)
+
+# Calculate coeff confidence intervals
+confint(model_flu)
+
+# Fit a Bayesian GLM
+bayes_flu <- bayesx(Flu_OBS ~ HealthDeprivation, offset = log(london$TOTAL_POP),
+                    family = "poisson", data = data.frame(london), 
+                    control = bayesx.control(seed = 17610407))
+                    
+# Summarize it                    
+summary(bayes_flu)
+
+# Look at the samples from the Bayesian model
+plot(samples(bayes_flu))
+
