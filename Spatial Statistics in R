@@ -636,3 +636,27 @@ coordnames(ca_geo)
 # The pH depends on the coordinates
 ph_vgm <- variogram(pH ~ x + y, ca_geo[!miss, ])
 plot(ph_vgm)
+
+# ca_geo, miss, ph_vgm have been pre-defined
+ls.str()
+
+# Eyeball the variogram and estimate the initial parameters
+nugget <- 0.16
+psill <- 0.14
+range <- 15000
+
+# Fit the variogram
+v_model <- fit.variogram(
+  ph_vgm, 
+  model = vgm(
+    model = "Ste",
+    nugget = nugget,
+    psill = psill,
+    range = range,
+    kappa = 0.5
+  )
+)
+
+# Show the fitted variogram on top of the binned variogram
+plot(ph_vgm, model = v_model)
+print(v_model)
