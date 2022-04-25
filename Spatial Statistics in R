@@ -366,3 +366,12 @@ london_ref$NAME[london_ref$Leave > london_ref$Remain]
 
 # Plot a map of the percentage that voted "Remain"
 spplot(london_ref, zcol = "Pct_Remain")
+
+# See what information we have for each borough
+summary(london_ref)
+
+# Which boroughs voted to "Leave"?
+london_ref$NAME[london_ref$Leave > london_ref$Remain]
+
+# Plot a map of the percentage that voted "Remain"
+spplot(london_ref, zcol = "Pct_Remain")
