@@ -660,3 +660,17 @@ v_model <- fit.variogram(
 # Show the fitted variogram on top of the binned variogram
 plot(ph_vgm, model = v_model)
 print(v_model)
+
+# ca_geo, miss, v_model have been pre-defined
+ls.str()
+
+# Set the trend formula and the new data
+km <- krige(pH ~ x + y, ca_geo[!miss, ], newdata = ca_geo[miss, ], model = v_model)
+names(km)
+
+# Plot the predicted values
+spplot(km, "var1.pred")
+
+# Compute the probability of alkaline samples, and map
+km$pAlkaline <- 1 - pnorm(7, mean = km$var1.pred, sd = sqrt(km$var1.var))
+spplot(km, "pAlkaline")
