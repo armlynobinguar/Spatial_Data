@@ -357,3 +357,12 @@ ggplot(data.frame(sasq_mc), aes(x = t)) +
 
 # Compute the p-value as the proportion of tests greater than the data
 sum(sasq_mc$t > sasq_mc$t0) / 1000
+
+# See what information we have for each borough
+summary(london_ref)
+
+# Which boroughs voted to "Leave"?
+london_ref$NAME[london_ref$Leave > london_ref$Remain]
+
+# Plot a map of the percentage that voted "Remain"
+spplot(london_ref, zcol = "Pct_Remain")
