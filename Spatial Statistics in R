@@ -424,3 +424,23 @@ moran.mc(
   nb2listw(borough_nb), 
   999
 )
+
+
+# Get a summary of the data set
+summary(london)
+
+# Map the OBServed number of flu reports
+spplot(london, "Flu_OBS")
+
+# Compute and print the overall incidence of flu
+r <- sum(london$Flu_OBS) / sum(london$TOTAL_POP)
+r
+
+# Calculate the expected number for each borough
+london$Flu_EXP <- london$TOTAL_POP * r
+
+# Calculate the ratio of OBServed to EXPected
+london$Flu_SMR <- london$Flu_OBS / london$Flu_EXP
+
+# Map the SMR
+spplot(london, "Flu_SMR")
