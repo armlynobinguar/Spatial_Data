@@ -555,3 +555,17 @@ flu_spatial <- bayesx(
 # Summarize the model
 summary(flu_spatial)
 
+
+# Summarize the model
+summary(flu_spatial)
+
+# Map the fitted spatial term only
+london$spatial <- fitted(flu_spatial, term = "sx(i):mrf")[, "Mean"]
+spplot(london, zcol = "spatial")
+
+# Map the residuals
+london$spatial_resid <- residuals(flu_spatial)[, "mu"]
+spplot(london, zcol = "spatial_resid")
+
+# Test residuals for spatial correlation
+moran.mc(london$spatial_resid, nb2listw(borough_nb), 999)
