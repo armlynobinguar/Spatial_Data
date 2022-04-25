@@ -617,3 +617,12 @@ predictions <- predict(m_trend, newdata = ca_geo_miss, se.fit = TRUE)
 # Compute the exceedance probability 
 pAlkaline <- 1 - pnorm(7, mean = predictions$fit, sd = predictions$se.fit)
 hist(pAlkaline)
+
+# ca_geo, miss have been pre-defined
+ls.str()
+
+# Make a cloud from the non-missing data up to 10km
+plot(variogram(pH ~ 1, ca_geo[!miss, ], cloud = TRUE, cutoff = 10000))
+
+# Make a variogram of the non-missing data
+plot(variogram(pH ~ 1, ca_geo[!miss, ]))
