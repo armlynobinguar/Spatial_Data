@@ -181,3 +181,7 @@ map2 %>%
 # Add circle markers with labels identifying the name of each college
 map %>% 
     addCircleMarkers(data = ca, radius = 2, label = ~name)
+
+# Use paste0 to add sector information to the label inside parentheses 
+map %>% 
+    addCircleMarkers(data = ca, radius = 2, label = ~paste0(name, " (", sector_label, ")"))
