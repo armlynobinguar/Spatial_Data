@@ -63,3 +63,18 @@ leaflet() %>%
 leaflet() %>%
     addProviderTiles("CartoDB") %>%
     addMarkers(lng = dc_hq$lon, lat = dc_hq$lat)
+
+# Store leaflet hq map in an object called map
+map <- leaflet() %>%
+          addProviderTiles("CartoDB") %>%
+          # Use dc_hq to add the hq column as popups
+          addMarkers(lng = dc_hq$lon, lat = dc_hq$lat,
+                     popup = dc_hq$hq)
+
+# Center the view of map on the Belgium HQ with a zoom of 5
+map_zoom <- map %>%
+      setView(lat = 50.881363, lng = 4.717863,
+              zoom = 5)
+
+# Print map_zoom
+map_zoom
