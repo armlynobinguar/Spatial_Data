@@ -78,3 +78,9 @@ map_zoom <- map %>%
 
 # Print map_zoom
 map_zoom
+
+# Remove markers, reset bounds, and store the updated map in the m object
+map_clear <- map %>%
+        clearMarkers() %>% 
+        clearBounds()
+
