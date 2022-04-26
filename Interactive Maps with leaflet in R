@@ -58,3 +58,8 @@ leaflet() %>%
     addProviderTiles("CartoDB") %>%
     addMarkers(lng = -73.98575, lat = 40.74856)  %>%
     setView(lng = -73.98575, lat = 40.74856, zoom = 12)
+    
+    # Plot both DataCamp's NYC and Belgium locations
+leaflet() %>%
+    addProviderTiles("CartoDB") %>%
+    addMarkers(lng = dc_hq$lon, lat = dc_hq$lat)
