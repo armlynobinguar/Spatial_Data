@@ -47,3 +47,8 @@ leaflet()  %>%
                lat1 = dc_hq$lat[2] + .05,
                lng2 = dc_hq$lon[2] - .05,
                lat2 = dc_hq$lat[2] - .05)
+               
+               # Plot DataCamp's NYC HQ 
+leaflet() %>% 
+    addProviderTiles("CartoDB") %>% 
+    addMarkers(lng = dc_hq$lon[1], lat = dc_hq$lat[1])
