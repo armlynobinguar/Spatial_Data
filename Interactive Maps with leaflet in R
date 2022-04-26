@@ -172,3 +172,8 @@ map_color
 map2 <- map %>% 
             clearMarkers() %>% 
             clearBounds()
+
+# Make the institution name in each popup bold
+map2 %>% 
+    addCircleMarkers(data = ca, radius = 2, 
+                     popup = ~paste0("<b>", name, "</b>", "<br/>", sector_label))
