@@ -24,3 +24,7 @@ leaflet() %>%
 # Create a leaflet map that uses the Esri provider tile
 leaflet() %>%
     addProviderTiles("Esri")
+
+# Create a leaflet map that uses the CartoDB.PositronNoLabels provider tile
+leaflet() %>%
+    addProviderTiles("CartoDB.PositronNoLabels")
