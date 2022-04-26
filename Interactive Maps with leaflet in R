@@ -52,3 +52,9 @@ leaflet()  %>%
 leaflet() %>% 
     addProviderTiles("CartoDB") %>% 
     addMarkers(lng = dc_hq$lon[1], lat = dc_hq$lat[1])
+    
+    # Plot DataCamp's NYC HQ with zoom of 12    
+leaflet() %>%
+    addProviderTiles("CartoDB") %>%
+    addMarkers(lng = -73.98575, lat = 40.74856)  %>%
+    setView(lng = -73.98575, lat = 40.74856, zoom = 12)
