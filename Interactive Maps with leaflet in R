@@ -33,3 +33,17 @@ leaflet() %>%
 leaflet()  %>% 
     addProviderTiles("CartoDB")  %>% 
     setView(lng = -73.98575, lat = 40.74856, zoom = 6)
+    
+   leaflet(options = leafletOptions(
+                    # Set minZoom and dragging 
+                    minZoom = 12, dragging = TRUE)) %>% 
+  addProviderTiles("CartoDB") %>% 
+  
+  # Set default zoom level
+  setView(lng = dc_hq$lon[2], lat = dc_hq$lat[2], zoom = 14) %>% 
+  
+  # Set max bounds of map
+  setMaxBounds(lng1 = dc_hq$lon[2] + .05,
+               lat1 = dc_hq$lat[2] + .05,
+               lng2 = dc_hq$lon[2] - .05,
+               lat2 = dc_hq$lat[2] - .05)
