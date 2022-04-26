@@ -133,3 +133,8 @@ map_zoom
 # Clear the markers from the map 
 map2 <- map %>% 
             clearMarkers()
+            
+            
+            # Use addCircleMarkers() to plot each college as a circle
+map2 %>%
+    addCircleMarkers(lng = ca$lng, lat = ca$lat)
