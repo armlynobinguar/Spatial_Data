@@ -205,3 +205,10 @@ map2
 m %>% 
     addLegend(pal = pal, 
               values = c("Public", "Private", "For-Profit"))
+
+# Customize the legend
+m %>% 
+    addLegend(pal = pal, 
+              values = c("Public", "Private", "For-Profit"),
+              # opacity of .5, title of Sector, and position of topright
+              opacity = 0.5, title = "Sector", position = "topright")
