@@ -28,3 +28,8 @@ leaflet() %>%
 # Create a leaflet map that uses the CartoDB.PositronNoLabels provider tile
 leaflet() %>%
     addProviderTiles("CartoDB.PositronNoLabels")
+
+# Map with CartoDB tile centered on DataCamp's NYC office with zoom of 6
+leaflet()  %>% 
+    addProviderTiles("CartoDB")  %>% 
+    setView(lng = -73.98575, lat = 40.74856, zoom = 6)
