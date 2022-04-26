@@ -138,3 +138,8 @@ map2 <- map %>%
             # Use addCircleMarkers() to plot each college as a circle
 map2 %>%
     addCircleMarkers(lng = ca$lng, lat = ca$lat)
+    
+    # Change the radius of each circle to be 2 pixels and the color to red
+map2 %>% 
+    addCircleMarkers(lng = ca$lng, lat = ca$lat,
+                     radius = 2, color = "red")
