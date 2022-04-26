@@ -200,3 +200,8 @@ map2 <-
 
 # Print map2
 map2
+
+# Add a legend that displays the colors used in pal
+m %>% 
+    addLegend(pal = pal, 
+              values = c("Public", "Private", "For-Profit"))
