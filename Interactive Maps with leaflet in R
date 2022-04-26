@@ -16,3 +16,7 @@ str_detect(names(providers), "CartoDB")
 
 # Use str_detect() to print only the provider tile names that include the string "CartoDB"
 names(providers)[str_detect(names(providers), "CartoDB")]
+
+# Change addTiles() to addProviderTiles() and set the provider argument to "CartoDB"
+leaflet() %>% 
+    addProviderTiles(provider = "CartoDB")
