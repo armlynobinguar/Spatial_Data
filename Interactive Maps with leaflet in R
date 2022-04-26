@@ -102,3 +102,9 @@ ipeds <-
 ipeds %>% 
     group_by(state) %>% 
     count()
+
+# Create a list of US States in descending order by the number of colleges in each state
+ipeds %>% 
+    group_by(state) %>% 
+    count() %>% 
+    arrange(desc(n))
