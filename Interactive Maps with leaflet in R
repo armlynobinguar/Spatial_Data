@@ -92,3 +92,8 @@ map_clear <- map %>%
 
 # Print the cleared map
 map_clear
+
+# Remove colleges with missing sector information
+ipeds <- 
+    ipeds_missing %>% 
+    drop_na()
