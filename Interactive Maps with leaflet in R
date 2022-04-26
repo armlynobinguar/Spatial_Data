@@ -20,3 +20,7 @@ names(providers)[str_detect(names(providers), "CartoDB")]
 # Change addTiles() to addProviderTiles() and set the provider argument to "CartoDB"
 leaflet() %>% 
     addProviderTiles(provider = "CartoDB")
+
+# Create a leaflet map that uses the Esri provider tile
+leaflet() %>%
+    addProviderTiles("Esri")
