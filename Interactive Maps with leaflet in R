@@ -116,3 +116,8 @@ ca <- ipeds %>%
 # Use `addMarkers` to plot all of the colleges in `ca` on the `map` leaflet map
 map %>% 
     addMarkers(lng = ca$lng, lat = ca$lat)
+    
+    # Center the map on LA 
+map %>% 
+    addMarkers(data = ca) %>% 
+    setView(lat = la_coords$lat, lng = la_coords$lon, zoom = 12)
