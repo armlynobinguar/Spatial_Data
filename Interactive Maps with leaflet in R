@@ -108,3 +108,11 @@ ipeds %>%
     group_by(state) %>% 
     count() %>% 
     arrange(desc(n))
+
+# Create a dataframe called `ca` with data on only colleges in California
+ca <- ipeds %>%
+        filter(state == "CA")
+
+# Use `addMarkers` to plot all of the colleges in `ca` on the `map` leaflet map
+map %>% 
+    addMarkers(lng = ca$lng, lat = ca$lat)
