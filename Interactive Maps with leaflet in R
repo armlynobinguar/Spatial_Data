@@ -143,3 +143,8 @@ map2 %>%
 map2 %>% 
     addCircleMarkers(lng = ca$lng, lat = ca$lat,
                      radius = 2, color = "red")
+                     
+                     # Add circle markers with popups for college names
+map %>%
+    addCircleMarkers(data = ca, radius = 2, popup = ~name)
+
