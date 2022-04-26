@@ -84,3 +84,11 @@ map_clear <- map %>%
         clearMarkers() %>% 
         clearBounds()
 
+
+# Remove markers, reset bounds, and store the updated map in the m object
+map_clear <- map %>%
+        clearMarkers() %>% 
+        clearBounds()
+
+# Print the cleared map
+map_clear
