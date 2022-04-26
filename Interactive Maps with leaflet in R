@@ -121,3 +121,11 @@ map %>%
 map %>% 
     addMarkers(data = ca) %>% 
     setView(lat = la_coords$lat, lng = la_coords$lon, zoom = 12)
+
+# Set the zoom level to 8 and store in the map_zoom object
+map_zoom <- 
+    map %>% 
+      addMarkers(data = ca) %>% 
+      setView(lat = la_coords$lat, lng = la_coords$lon, zoom = 8)
+      
+map_zoom
