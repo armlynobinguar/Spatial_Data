@@ -97,3 +97,8 @@ map_clear
 ipeds <- 
     ipeds_missing %>% 
     drop_na()
+    
+    # Count the number of four-year colleges in each state
+ipeds %>% 
+    group_by(state) %>% 
+    count()
