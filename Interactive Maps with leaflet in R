@@ -129,3 +129,7 @@ map_zoom <-
       setView(lat = la_coords$lat, lng = la_coords$lon, zoom = 8)
       
 map_zoom
+
+# Clear the markers from the map 
+map2 <- map %>% 
+            clearMarkers()
