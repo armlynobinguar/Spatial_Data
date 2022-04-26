@@ -1,0 +1,6 @@
+# Load the leaflet library
+library(leaflet)
+
+# Create a leaflet map with default map tile using addTiles()
+leaflet() %>%
+    addTiles()
