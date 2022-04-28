@@ -294,3 +294,12 @@ m4 <- leaflet() %>%
         setView(lat = 39.8282, lng = -98.5795, zoom = 4) 
 
 m4
+# Make each sector of colleges searchable 
+m4_search <- m4  %>% 
+        addSearchFeatures(
+            targetGroups = c("Public", "Private", "For-Profit"), 
+            # Set the search zoom level to 18
+            options = searchFeaturesOptions(zoom = 18)) 
+
+# Try searching the map for a college
+m4_search
