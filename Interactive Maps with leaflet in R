@@ -212,3 +212,10 @@ m %>%
               values = c("Public", "Private", "For-Profit"),
               # opacity of .5, title of Sector, and position of topright
               opacity = 0.5, title = "Sector", position = "topright")
+              
+              library(leaflet.extras)
+
+leaflet() %>%
+  addTiles() %>% 
+  addSearchOSM() %>%
+  addReverseSearchOSM()
