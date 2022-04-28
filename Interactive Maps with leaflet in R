@@ -468,3 +468,15 @@ final_map <- m4 %>%
     # Update layer controls including "Wealthy Zip Codes"
     addLayersControl(baseGroups = c("OSM", "Carto", "Esri"), 
                          overlayGroups = c("Public", "Private", "For-Profit", "Wealthy Zip Codes"))     
+
+# Add polygons using wealthy_zips
+final_map <- m4 %>% 
+   addPolygons(data = wealthy_zips, weight = 1, fillOpacity = .5, color = "Grey",  group = "Wealthy Zip Codes", 
+              label = ~paste0("Mean Income: ", dollar(mean_income)),
+              highlightOptions = highlightOptions(weight = 5, color = "white", bringToFront = TRUE)) %>% 
+    # Update layer controls including "Wealthy Zip Codes"
+    addLayersControl(baseGroups = c("OSM", "Carto", "Esri"), 
+                         overlayGroups = c("Public", "Private", "For-Profit", "Wealthy Zip Codes"))     
+
+# Print and explore your very last map of the course!
+final_map
