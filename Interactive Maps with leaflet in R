@@ -322,3 +322,6 @@ class(shp)
 
 # Print the slot names of `shp`
 slotNames(shp)
+
+# Glimpse the data slot of shp
+glimpse(shp@data)
