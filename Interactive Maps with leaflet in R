@@ -278,3 +278,19 @@ leaflet() %>%
   addProviderTiles("Esri", group = "Esri") %>% 
   # Use addLayersControl to allow users to toggle between basemaps
   addLayersControl(baseGroups = c("OSM", "CartoDB", "Esri"))
+
+m4 <- leaflet() %>% 
+        addTiles(group = "OSM") %>% 
+        addProviderTiles("CartoDB", group = "Carto") %>% 
+        addProviderTiles("Esri", group = "Esri") %>% 
+        addCircleMarkers(data = public, radius = 2, label = ~htmlEscape(name),
+                         color = ~pal(sector_label), group = "Public") %>% 
+        addCircleMarkers(data = private, radius = 2, label = ~htmlEscape(name),
+                           color = ~pal(sector_label), group = "Private")  %>% 
+        addCircleMarkers(data = profit, radius = 2, label = ~htmlEscape(name),
+                         color = ~pal(sector_label), group = "For-Profit")  %>% 
+        addLayersControl(baseGroups = c("OSM", "Carto", "Esri"), 
+                         overlayGroups = c("Public", "Private", "For-Profit")) %>% 
+        setView(lat = 39.8282, lng = -98.5795, zoom = 4) 
+
+m4
