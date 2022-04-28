@@ -372,3 +372,12 @@ shp %>%
     addTiles() %>% 
     addPolygons()
 
+# map the polygons in shp
+shp %>% 
+    leaflet() %>% 
+    addTiles() %>% 
+    addPolygons()
+
+# which zips were not in the income data?
+shp_na <- shp[is.na(shp$mean_income),]
+
