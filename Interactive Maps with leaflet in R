@@ -396,3 +396,7 @@ shp_na %>%
     leaflet() %>% 
     addTiles() %>% 
     addPolygons()
+    
+    # summarize the mean income variable
+summary(shp$mean_income)
+
