@@ -243,5 +243,16 @@ m3 <- leaflet() %>%
         addProviderTiles("CartoDB") %>% 
         addCircleMarkers(data = public, radius = 2, label = ~htmlEscape(name),
                          color = ~pal(sector_label), group = "Public")
+                         
+                         # Create data frame called private with only private colleges
+private <- filter(ipeds, sector_label == "Private")  
+
+# Add private colleges to `m3` as a new layer
+m3 <- m3 %>% 
+        addCircleMarkers(data = private, radius = 2, label = ~htmlEscape(name),
+                         color = ~pal(sector_label), group = "Private") %>% 
+        addLayersControl(overlayGroups = c("Public", "Private"))
+
+m3
 
 m3
