@@ -328,3 +328,6 @@ glimpse(shp@data)
 
 # Print the class of the data slot of shp
 class(shp@data)
+
+# Print GEOID10
+shp@data$GEOID10
