@@ -313,3 +313,6 @@ ipeds %>%
                          color = ~pal(sector_label),
                          # Cluster all colleges using `clusterOptions`
                          clusterOptions = markerClusterOptions()) 
+                         
+                         # Print a summary of the `shp` data
+summary(shp)
