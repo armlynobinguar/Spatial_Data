@@ -444,3 +444,6 @@ high_inc %>%
   addPolygons(weight = 1, color = ~nc_pal(log(mean_income)), fillOpacity = 1,
               label = ~paste0("Mean Income: ", dollar(mean_income)),
               highlightOptions = highlightOptions(weight = 5, color = "white", bringToFront = TRUE))
+
+# Print the slot names of `wealthy_zips`
+slotNames(wealthy_zips)
