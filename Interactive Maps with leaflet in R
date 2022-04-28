@@ -400,3 +400,9 @@ shp_na %>%
     # summarize the mean income variable
 summary(shp$mean_income)
 
+# summarize the mean income variable
+summary(shp$mean_income)
+
+# subset shp to include only zip codes in the top quartile of mean income
+high_inc <- shp[!is.na(shp$mean_income) & shp$mean_income > 55917,]
+
