@@ -319,3 +319,6 @@ summary(shp)
 
 # Print the class of `shp`
 class(shp)
+
+# Print the slot names of `shp`
+slotNames(shp)
