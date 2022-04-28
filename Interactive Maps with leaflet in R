@@ -316,3 +316,6 @@ ipeds %>%
                          
                          # Print a summary of the `shp` data
 summary(shp)
+
+# Print the class of `shp`
+class(shp)
