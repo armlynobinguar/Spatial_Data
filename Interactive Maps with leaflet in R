@@ -231,3 +231,17 @@ m2 <-
 # Map all American colleges 
 m2 %>% 
     addCircleMarkers() 
+    
+    # Load the htmltools package
+library(htmltools)
+
+# Create data frame called public with only public colleges
+public <- filter(ipeds, sector_label == "Public")  
+
+# Create a leaflet map of public colleges called m3 
+m3 <- leaflet() %>% 
+        addProviderTiles("CartoDB") %>% 
+        addCircleMarkers(data = public, radius = 2, label = ~htmlEscape(name),
+                         color = ~pal(sector_label), group = "Public")
+
+m3
