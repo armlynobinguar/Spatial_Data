@@ -418,3 +418,17 @@ high_inc %>%
   leaflet() %>%
   addTiles() %>%
   addPolygons()
+  
+  # create color palette with colorNumeric()
+nc_pal <- colorNumeric("YlGn", domain = high_inc@data$mean_income)
+
+high_inc %>%
+  leaflet() %>%
+  addTiles() %>%
+  # set boundary thickness to 1 and color polygons
+  addPolygons(weight = 1, color = ~nc_pal(mean_income),
+              # add labels that display mean income
+              label = ~paste0("Mean Income: ", dollar(mean_income)),
+              # highlight polygons on hover
+              highlightOptions = highlightOptions(weight = 5, color = "white",
+              bringToFront = TRUE))
