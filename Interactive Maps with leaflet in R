@@ -450,3 +450,12 @@ slotNames(wealthy_zips)
 
 # Print a summary of the `mean_income` variable
 summary(wealthy_zips@data$mean_income)
+
+# plot zip codes with mean incomes >= $200k
+wealthy_zips %>% 
+  leaflet() %>% 
+  addProviderTiles("CartoDB") %>% 
+  # set color to green and create Wealth Zipcodes group
+  addPolygons(weight = 1, fillOpacity = .7, color = "green",  group = "Wealthy Zipcodes", 
+              label = ~paste0("Mean Income: ", dollar(mean_income)),
+              highlightOptions = highlightOptions(weight = 5, color = "white", bringToFront = TRUE))
