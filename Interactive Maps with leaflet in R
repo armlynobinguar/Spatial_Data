@@ -447,3 +447,6 @@ high_inc %>%
 
 # Print the slot names of `wealthy_zips`
 slotNames(wealthy_zips)
+
+# Print a summary of the `mean_income` variable
+summary(wealthy_zips@data$mean_income)
