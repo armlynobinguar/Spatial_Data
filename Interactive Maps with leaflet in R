@@ -365,3 +365,10 @@ shp_nc_income <- shp@data %>%
 # Print the number of missing values of each variable in shp_nc_income
 shp_nc_income  %>%
   summarize_all(funs(sum(is.na(.))))
+  
+  # map the polygons in shp
+shp %>% 
+    leaflet() %>% 
+    addTiles() %>% 
+    addPolygons()
+
