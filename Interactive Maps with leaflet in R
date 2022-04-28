@@ -406,3 +406,15 @@ summary(shp$mean_income)
 # subset shp to include only zip codes in the top quartile of mean income
 high_inc <- shp[!is.na(shp$mean_income) & shp$mean_income > 55917,]
 
+
+# summarize the mean income variable
+summary(shp$mean_income)
+
+# subset shp to include only zip codes in the top quartile of mean income
+high_inc <- shp[!is.na(shp$mean_income) & shp$mean_income > 55917,]
+
+# map the boundaries of the zip codes in the top quartile of mean income
+high_inc %>%
+  leaflet() %>%
+  addTiles() %>%
+  addPolygons()
