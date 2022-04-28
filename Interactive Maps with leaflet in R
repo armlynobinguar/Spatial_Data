@@ -271,3 +271,10 @@ m4 <- m3 %>%
         setView(lat = 39.8282, lng = -98.5795, zoom = 4) 
         
 m4
+leaflet() %>% 
+  # Add the OSM, CartoDB and Esri tiles
+  addTiles(group = "OSM") %>% 
+  addProviderTiles("CartoDB", group = "CartoDB") %>% 
+  addProviderTiles("Esri", group = "Esri") %>% 
+  # Use addLayersControl to allow users to toggle between basemaps
+  addLayersControl(baseGroups = c("OSM", "CartoDB", "Esri"))
