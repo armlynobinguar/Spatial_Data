@@ -303,3 +303,13 @@ m4_search <- m4  %>%
 
 # Try searching the map for a college
 m4_search
+
+ipeds %>% 
+    leaflet() %>% 
+        addTiles() %>% 
+        # Sanitize any html in our labels
+        addCircleMarkers(radius = 2, label = ~htmlEscape(name),
+                         # Color code colleges by sector using the `pal` color palette
+                         color = ~pal(sector_label),
+                         # Cluster all colleges using `clusterOptions`
+                         clusterOptions = markerClusterOptions()) 
